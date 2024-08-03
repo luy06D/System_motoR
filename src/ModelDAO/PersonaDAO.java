@@ -1,19 +1,33 @@
 
 package ModelDAO;
+import Connection.Conexion;
 import Interfaces.Persona_Interface;
 import Models.Persona;
+
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class PersonaDAO implements Persona_Interface {
+    Conexion conexion = new Conexion();
+    Connection connec;
+    PreparedStatement ps;
+    ResultSet rs;
+    Persona per;
     
-
     @Override
     public boolean insertPeople(Persona p) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        try{
+            
+            
+            
+        }catch(Exception ex){
+            Logger.getLogger(PersonaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
