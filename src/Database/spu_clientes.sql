@@ -11,7 +11,7 @@ BEGIN
     WHERE CLI.estado = 1;
 END //
 DELIMITER ;
-
+	
 CALL spu_clientes_listar();
 
 -- REGISTRAR CLIENTES -- 

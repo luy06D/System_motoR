@@ -10,6 +10,7 @@ import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -20,6 +21,8 @@ public class ClienteDAO implements Cliente_Interface{
     ResultSet rs;
     Cliente cli;
     Persona per;
+    
+    ArrayList<HashMap<String, Object>> vectorCli = new ArrayList<>();
     
 
     @Override
@@ -58,8 +61,34 @@ public class ClienteDAO implements Cliente_Interface{
     }
 
     @Override
-    public ArrayList<Cliente> listClient() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public ArrayList<HashMap<String, Object>> listClient() {
+        
+        try{
+            String querySelect = "{CALL spu_clientes_listar()}";
+            connec = conexion.getConexion();
+            cs = connec.prepareCall(querySelect);
+            rs = cs.executeQuery();
+            
+            while(rs.next()){       
+                HashMap<String, Object> map = new HashMap<>();
+                map.put("idcliente", rs.getInt("idcliente"));
+                map.put("idpersona", rs.getInt("idpersona"));
+                map.put("cliente", rs.getString("cliente"));
+                map.put("dni", rs.getString("dni"));
+                map.put("fechaNac", rs.getDate("fechaNac").toLocalDate());
+                map.put("telefono", rs.getString("telefono"));
+                map.put("estado", rs.getBoolean("estado"));
+                vectorCli.add(map);
+            }
+            
+        }catch(Exception ex){
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null , ex);  
+        }
+        
+        return vectorCli;
+       
     }
+
+  
     
 }
