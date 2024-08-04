@@ -1,18 +1,18 @@
 USE moto_repuestos;
 
-
-
 -- LISTAR PERSONAS -- 
-DELIMITER 
+DELIMITER //
 CREATE PROCEDURE spu_personas_listar()
 BEGIN 
 	SELECT * FROM PERSONAS;
-END;
-DELIMITER;
+END //
+DELIMITER ;
+
+CALL spu_personas_listar();
 
 
 -- REGISTRAR PERSONAS --
-DELIMITER 
+DELIMITER //
 CREATE PROCEDURE spu_personas_create(
  IN _nombres VARCHAR(30),
  IN _apellidos VARCHAR(30),
@@ -24,33 +24,33 @@ BEGIN
 	INSERT INTO PERSONAS (nombres, apellidos, dni , fechaNac, telefono)
 				VALUES (_nombres, _apellidos , _dni, _fechaNac, _telefono);
 
-END;
-DELIMITER; 
+END //
+DELIMITER ; 
+CALL spu_personas_create ('Luis David','Cusi Gonzales','73196921','2003-09-06', '934651825');
 
-CALL 
 
 -- ACTUALIZAR PERSONAS -- 
-DELIMITER
+DELIMITER //
 CREATE PROCEDURE spu_personas_update(
- IN _idpersona INT,
- IN _nombres VARCHAR(30),
- IN _apellidos VARCHAR(30),
- IN _dni CHAR(8),
- IN _fechaNac DATE,
- IN _telefono CHAR(9)
+    IN _idpersona INT,
+    IN _nombres VARCHAR(30),
+    IN _apellidos VARCHAR(30),
+    IN _dni CHAR(8),
+    IN _fechaNac DATE,
+    IN _telefono CHAR(9)
 )
 BEGIN 
-	UPDATE PERSONAS 
+    UPDATE PERSONAS 
     SET nombres = _nombres,
-		apellidos = _apellidos,
+        apellidos = _apellidos,
         dni = _dni,
         fechaNac = _fechaNac,
         telefono = _telefono
-	WHERE idpersona = _idpersona;
+    WHERE idpersona = _idpersona;
+END //
+DELIMITER ;
 
-END;
-DELIMITER;
-
+CALL spu_personas_update (1,'Alex','Padilla','12345678','2002-01-06', '123456789');
 
 
 

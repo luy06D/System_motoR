@@ -1,8 +1,8 @@
 
 package Models;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 public class Persona {
     
@@ -10,7 +10,7 @@ public class Persona {
     private String nombres;
     private String apellidos;
     private String dni;
-    private LocalDate fechaNac;
+    private Date fechaNac;
     private String telefono;
     private LocalDateTime create_at;
 
@@ -46,11 +46,11 @@ public class Persona {
         this.dni = dni;
     }
 
-    public LocalDate getFechaNac() {
+    public Date getFechaNac() {
         return fechaNac;
     }
 
-    public void setFechaNac(LocalDate fechaNac) {
+    public void setFechaNac(Date fechaNac) {
         this.fechaNac = fechaNac;
     }
 
