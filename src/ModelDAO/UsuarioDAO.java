@@ -3,17 +3,43 @@ package ModelDAO;
 
 import Interfaces.Usuario_Interface;
 import Models.Usuario;
-
+import Connection.Conexion;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
+import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class UsuarioDAO implements Usuario_Interface{
-
+    Conexion conexion = new Conexion();
+    Connection connec;
+    CallableStatement cs;
+    ResultSet rs;
+    Usuario usu;
+    
     @Override
     public Usuario Login(String username, String password) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+       try{
+           String queryLogin = "{CALL spu_usuarios_login(?)}";
+           connec = conexion.getConexion();
+           cs = connec.prepareCall(queryLogin);
+           cs.setString(1, username);
+          // cs.setString(2, password);
+           rs = cs.executeQuery();
+           if(rs.next()){
+               usu = new Usuario();
+               usu.setIdusuario(rs.getInt("idusuario"));
+               usu.setUsername(rs.getString("username"));
+               usu.setClave_acceso(rs.getString("clave_acceso"));
+               usu.setNivel_acceso(rs.getString("nivel_acceso"));                  
+           }  
+           
+       }catch(Exception ex){
+           Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);     
+       }
+       
+       return usu;
     }
 
     @Override

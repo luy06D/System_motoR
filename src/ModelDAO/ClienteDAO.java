@@ -27,7 +27,7 @@ public class ClienteDAO implements Cliente_Interface{
 
     @Override
     public boolean createClient(Persona per) {
-            // COnvertir a Date
+            // Convertir a Date
             Date fechaNac = per.getFechaNac();
         try{
             String queryInsert = "{CALL spu_clientes_create(?,?,?,?,?)}";  

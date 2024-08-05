@@ -20,15 +20,16 @@ public class Jframe_Inicio extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        itemCerrarSesion = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         Item_registro = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
         Item_clientesR = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
         jMenu7 = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
-        jMenu9 = new javax.swing.JMenu();
 
         jMenu8.setText("jMenu8");
 
@@ -52,6 +53,16 @@ public class Jframe_Inicio extends javax.swing.JFrame {
         jMenu1.setMargin(new java.awt.Insets(3, 1, 3, 6));
         jMenu1.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Inicio/pagina-de-inicio.png"))); // NOI18N
         jMenu1.add(jSeparator1);
+
+        itemCerrarSesion.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        itemCerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Inicio/salir-alt.png"))); // NOI18N
+        itemCerrarSesion.setText("Cerrar Sesión");
+        itemCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemCerrarSesionActionPerformed(evt);
+            }
+        });
+        jMenu1.add(itemCerrarSesion);
 
         jMenuBar1.add(jMenu1);
 
@@ -91,6 +102,10 @@ public class Jframe_Inicio extends javax.swing.JFrame {
         });
         jMenu4.add(Item_clientesR);
 
+        jMenuItem1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jMenuItem1.setText("Filtro Clientes");
+        jMenu4.add(jMenuItem1);
+
         jMenuBar1.add(jMenu4);
 
         jMenu6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Inicio/verificar.png"))); // NOI18N
@@ -107,11 +122,6 @@ public class Jframe_Inicio extends javax.swing.JFrame {
         jMenu5.setText("USUARIOS     ");
         jMenu5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jMenuBar1.add(jMenu5);
-
-        jMenu9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Inicio/cerrar-sesion.png"))); // NOI18N
-        jMenu9.setText("CERRAR SESIÓN");
-        jMenu9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jMenuBar1.add(jMenu9);
 
         setJMenuBar(jMenuBar1);
 
@@ -146,6 +156,13 @@ public class Jframe_Inicio extends javax.swing.JFrame {
         JInternal_Clientes JICli = new JInternal_Clientes();
         openInternalFrame(JICli);
     }//GEN-LAST:event_Item_clientesRActionPerformed
+
+    private void itemCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemCerrarSesionActionPerformed
+         Jframe_login loginFrame = new Jframe_login();
+         loginFrame.setVisible(true); 
+
+        this.dispose();
+    }//GEN-LAST:event_itemCerrarSesionActionPerformed
 
     
     
@@ -194,6 +211,7 @@ public class Jframe_Inicio extends javax.swing.JFrame {
     private javax.swing.JMenuItem Item_clientesR;
     private javax.swing.JMenuItem Item_registro;
     private javax.swing.JDesktopPane destok_inicio;
+    private javax.swing.JMenuItem itemCerrarSesion;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -202,8 +220,8 @@ public class Jframe_Inicio extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenu jMenu8;
-    private javax.swing.JMenu jMenu9;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }

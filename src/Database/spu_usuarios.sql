@@ -6,9 +6,8 @@ DELIMITER //
 CREATE PROCEDURE spu_usuarios_login(IN _username VARCHAR(30))
 BEGIN 
 	SELECT idusuario, username, clave_acceso, nivel_acceso,
-			estado, nombres, apellidos
-    FROM USUARIOS USU
-    INNER JOIN PERSONAS PE ON USU.idpersona = PE.idpersona
+			estado
+    FROM USUARIOS 
     WHERE username = _username AND estado = 1;
 END //
 DELIMITER ;
