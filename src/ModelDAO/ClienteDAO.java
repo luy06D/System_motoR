@@ -73,7 +73,8 @@ public class ClienteDAO implements Cliente_Interface{
                 HashMap<String, Object> map = new HashMap<>();
                 map.put("idcliente", rs.getInt("idcliente"));
                 map.put("idpersona", rs.getInt("idpersona"));
-                map.put("cliente", rs.getString("cliente"));
+                map.put("nombres", rs.getString("nombres"));
+                map.put("apellidos", rs.getString("apellidos"));
                 map.put("dni", rs.getString("dni"));
                 map.put("fechaNac", rs.getDate("fechaNac").toLocalDate());
                 map.put("telefono", rs.getString("telefono"));

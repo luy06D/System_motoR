@@ -4,7 +4,7 @@ USE moto_repuestos;
 DELIMITER //
 CREATE PROCEDURE spu_clientes_listar()
 BEGIN 
-	SELECT idcliente, CLI.idpersona, CONCAT(nombres,' ',apellidos) AS cliente,
+	SELECT idcliente, CLI.idpersona, nombres, apellidos,
 			dni, fechaNac, telefono, estado 
     FROM CLIENTES CLI
     INNER JOIN PERSONAS PE ON CLI.idpersona = PE.idpersona
@@ -26,12 +26,18 @@ CREATE PROCEDURE spu_clientes_create(
 BEGIN 
 	DECLARE _idpersona INT; 
     
-		INSERT INTO PERSONAS (nombres, apellidos, dni , fechaNac, telefono)
-				VALUES (_nombres, _apellidos , _dni, _fechaNac, _telefono);
+    IF _fechaNac = '' THEN SET _fechaNac = NULL;
+    END IF;
+    
+    IF _telefono = '' THEN SET _telefono = NULL;
+    END IF;
+    
+	INSERT INTO PERSONAS (nombres, apellidos, dni , fechaNac, telefono)
+			VALUES (_nombres, _apellidos , _dni, _fechaNac, _telefono);
 		 
-		SET _idpersona = LAST_INSERT_ID();
+	SET _idpersona = LAST_INSERT_ID();
         
-        INSERT INTO CLIENTES (idpersona) VALUES (_idpersona);
+	INSERT INTO CLIENTES (idpersona) VALUES (_idpersona);
 END //
 DELIMITER ;
 
