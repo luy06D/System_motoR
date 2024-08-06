@@ -2,11 +2,20 @@
 package Views;
 
 import ModelDAO.ClienteDAO;
+import Models.Persona;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -39,6 +48,14 @@ public class JInternal_Clientes extends javax.swing.JInternalFrame {
                     txtApellidos.setText(apellidos);
                     txtDni.setText(dni);
                     txtTelefono.setText(telefono);
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                    Date date;
+                    try {
+                        date = dateFormat.parse(fechaNac);
+                        Jdate_fechaNac.setDate(date);
+                    } catch (ParseException ex) {
+                        Logger.getLogger(JInternal_Clientes.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                    
                    
                 }  
@@ -93,7 +110,16 @@ public class JInternal_Clientes extends javax.swing.JInternalFrame {
         }
     }
 
-    
+    private void resetForm(){
+        
+        txtNombres.setText(null);
+        txtApellidos.setText(null);
+        txtDni.setText(null);
+        txtTelefono.setText(null);
+        Jdate_fechaNac.setDate(null);
+        
+        
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -110,13 +136,13 @@ public class JInternal_Clientes extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         txtDni = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        txtFechanNac = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         txtTelefono = new javax.swing.JTextField();
         btnRegistrar = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
+        Jdate_fechaNac = new com.toedter.calendar.JDateChooser();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
 
@@ -170,7 +196,6 @@ public class JInternal_Clientes extends javax.swing.JInternalFrame {
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel5.setText("FECHA NACIMIENTO(opc):");
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
-        jPanel2.add(txtFechanNac, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 140, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel4.setText("TELEFONO(opc):");
@@ -206,6 +231,7 @@ public class JInternal_Clientes extends javax.swing.JInternalFrame {
             }
         });
         jPanel2.add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 221, 129, -1));
+        jPanel2.add(Jdate_fechaNac, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 170, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 580, 390));
 
@@ -223,15 +249,29 @@ public class JInternal_Clientes extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        // TODO add your handling code here:
+       Persona per = new Persona();
+       Date selectedDate = Jdate_fechaNac.getDate();
+       java.sql.Date sqlDate = new java.sql.Date(selectedDate.getTime());
+       
+       per.setNombres(txtNombres.getText());
+       per.setApellidos(txtApellidos.getText());
+       per.setDni(txtDni.getText());
+       per.setFechaNac(sqlDate);  
+       per.setTelefono(txtTelefono.getText());
+        System.out.println(sqlDate);
+       clidao.createClient(per);
+       
+       JOptionPane.showMessageDialog(this, "Registrado correctamente" , "Clientes", JOptionPane.INFORMATION_MESSAGE);
+      // resetForm();
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
-        // TODO add your handling code here:
+        resetForm();
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.toedter.calendar.JDateChooser Jdate_fechaNac;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnLimpiar;
@@ -249,7 +289,6 @@ public class JInternal_Clientes extends javax.swing.JInternalFrame {
     private javax.swing.JTable tbCliente;
     private javax.swing.JTextField txtApellidos;
     private javax.swing.JTextField txtDni;
-    private javax.swing.JTextField txtFechanNac;
     private javax.swing.JTextField txtNombres;
     private javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
