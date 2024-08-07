@@ -48,16 +48,49 @@ public class ClienteDAO implements Cliente_Interface{
         
         return false;
     }
-    
 
     @Override
-    public boolean updateClient(Cliente cli) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public boolean updateClient(Persona per) {
+            // Convertir a Date
+            Date fechaNac = per.getFechaNac();
+        try{
+            String queryInsert = "{CALL spu_personas_update(?,?,?,?,?,?)}";  
+            connec = conexion.getConexion();
+            cs = connec.prepareCall(queryInsert);
+            cs.setInt(1, per.getIdpersona());
+            cs.setString(2, per.getNombres());
+            cs.setString(3, per.getApellidos());
+            cs.setString(4, per.getDni());
+            cs.setDate(5, (java.sql.Date) fechaNac);
+            cs.setString(6, per.getTelefono());
+            
+            cs.executeUpdate();
+            connec.close();
+  
+        }catch(Exception ex){
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null , ex);  
+        }
+        
+        return false;
     }
 
     @Override
-    public boolean deleteClient(int idcliente) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public boolean deleteClient(int idpersona) {
+        try{
+            
+            String queryDelete = "CALL spu_clientes_delete(?)";
+            connec = conexion.getConexion();
+            cs = connec.prepareCall(queryDelete);
+            cs.setInt(1, idpersona);
+            
+            cs.executeUpdate();
+            connec.close();
+            
+        }catch(Exception ex){
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null , ex);  
+        }
+        
+        return false;
     }
 
     @Override

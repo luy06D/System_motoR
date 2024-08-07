@@ -20,18 +20,23 @@ public class Jframe_Inicio extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu5 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        itemProductosR = new javax.swing.JMenuItem();
+        itemMar_Cat = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        Item_registro = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
+        Item_clientesR = new javax.swing.JMenuItem();
+        JGestionarC = new javax.swing.JMenuItem();
+        jMenu6 = new javax.swing.JMenu();
+        jMenu7 = new javax.swing.JMenu();
         jMenu1 = new javax.swing.JMenu();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         itemCerrarSesion = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        Item_registro = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        jMenu4 = new javax.swing.JMenu();
-        Item_clientesR = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenu6 = new javax.swing.JMenu();
-        jMenu7 = new javax.swing.JMenu();
-        jMenu5 = new javax.swing.JMenu();
 
         jMenu8.setText("jMenu8");
 
@@ -76,6 +81,92 @@ public class Jframe_Inicio extends javax.swing.JFrame {
                 .addContainerGap(233, Short.MAX_VALUE))
         );
 
+        jMenu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Inicio/usuario.png"))); // NOI18N
+        jMenu5.setText("USUARIOS     ");
+        jMenu5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+
+        jMenuItem2.setText("Nuevo Usuario");
+        jMenu5.add(jMenuItem2);
+
+        jMenuItem3.setText("Gestionar Usuarios");
+        jMenu5.add(jMenuItem3);
+
+        jMenuBar1.add(jMenu5);
+
+        jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Inicio/agregar-producto.png"))); // NOI18N
+        jMenu3.setText("PRODUCTOS     ");
+        jMenu3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jMenu3.setMargin(new java.awt.Insets(3, 1, 3, 6));
+
+        itemProductosR.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        itemProductosR.setText("Nuevo Producto");
+        jMenu3.add(itemProductosR);
+
+        itemMar_Cat.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        itemMar_Cat.setText("Registro Marcas/Categ");
+        itemMar_Cat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemMar_CatActionPerformed(evt);
+            }
+        });
+        jMenu3.add(itemMar_Cat);
+
+        jMenuItem4.setText("Gestionar Productos");
+        jMenu3.add(jMenuItem4);
+
+        jMenuBar1.add(jMenu3);
+
+        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Inicio/alto.png"))); // NOI18N
+        jMenu2.setText("VENTAS     ");
+        jMenu2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jMenu2.setMargin(new java.awt.Insets(3, 1, 3, 6));
+
+        Item_registro.setText("Nueva Venta");
+        Item_registro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Item_registroActionPerformed(evt);
+            }
+        });
+        jMenu2.add(Item_registro);
+
+        jMenuBar1.add(jMenu2);
+
+        jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Inicio/nueva-cuenta.png"))); // NOI18N
+        jMenu4.setText("CLIENTES     ");
+        jMenu4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jMenu4.setMargin(new java.awt.Insets(3, 1, 3, 6));
+
+        Item_clientesR.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        Item_clientesR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Inicio/atencion-al-cliente.png"))); // NOI18N
+        Item_clientesR.setText("Nuevo Cliente");
+        Item_clientesR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Item_clientesRActionPerformed(evt);
+            }
+        });
+        jMenu4.add(Item_clientesR);
+
+        JGestionarC.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        JGestionarC.setText("Gestionar Clientes");
+        JGestionarC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JGestionarCActionPerformed(evt);
+            }
+        });
+        jMenu4.add(JGestionarC);
+
+        jMenuBar1.add(jMenu4);
+
+        jMenu6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Inicio/verificar.png"))); // NOI18N
+        jMenu6.setText("COMPRAS     ");
+        jMenu6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jMenuBar1.add(jMenu6);
+
+        jMenu7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Inicio/inventario.png"))); // NOI18N
+        jMenu7.setText("KARDEX     ");
+        jMenu7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jMenuBar1.add(jMenu7);
+
         jMenu1.setBackground(new java.awt.Color(102, 102, 0));
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Inicio/pagina-de-inicio.png"))); // NOI18N
         jMenu1.setText("INICIO     ");
@@ -95,63 +186,6 @@ public class Jframe_Inicio extends javax.swing.JFrame {
         jMenu1.add(itemCerrarSesion);
 
         jMenuBar1.add(jMenu1);
-
-        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Inicio/alto.png"))); // NOI18N
-        jMenu2.setText("VENTAS     ");
-        jMenu2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jMenu2.setMargin(new java.awt.Insets(3, 1, 3, 6));
-
-        Item_registro.setText("Registro");
-        Item_registro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Item_registroActionPerformed(evt);
-            }
-        });
-        jMenu2.add(Item_registro);
-
-        jMenuBar1.add(jMenu2);
-
-        jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Inicio/agregar-producto.png"))); // NOI18N
-        jMenu3.setText("PRODUCTOS     ");
-        jMenu3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jMenu3.setMargin(new java.awt.Insets(3, 1, 3, 6));
-        jMenuBar1.add(jMenu3);
-
-        jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Inicio/nueva-cuenta.png"))); // NOI18N
-        jMenu4.setText("CLIENTES     ");
-        jMenu4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jMenu4.setMargin(new java.awt.Insets(3, 1, 3, 6));
-
-        Item_clientesR.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        Item_clientesR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Inicio/atencion-al-cliente.png"))); // NOI18N
-        Item_clientesR.setText("Registro Clientes");
-        Item_clientesR.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Item_clientesRActionPerformed(evt);
-            }
-        });
-        jMenu4.add(Item_clientesR);
-
-        jMenuItem1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jMenuItem1.setText("Filtro Clientes");
-        jMenu4.add(jMenuItem1);
-
-        jMenuBar1.add(jMenu4);
-
-        jMenu6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Inicio/verificar.png"))); // NOI18N
-        jMenu6.setText("COMPRAS     ");
-        jMenu6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jMenuBar1.add(jMenu6);
-
-        jMenu7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Inicio/inventario.png"))); // NOI18N
-        jMenu7.setText("KARDEX     ");
-        jMenu7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jMenuBar1.add(jMenu7);
-
-        jMenu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Inicio/usuario.png"))); // NOI18N
-        jMenu5.setText("USUARIOS     ");
-        jMenu5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jMenuBar1.add(jMenu5);
 
         setJMenuBar(jMenuBar1);
 
@@ -183,8 +217,8 @@ public class Jframe_Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_Item_registroActionPerformed
 
     private void Item_clientesRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Item_clientesRActionPerformed
-        JInternal_Clientes JICli = new JInternal_Clientes();
-        openInternalFrame(JICli);
+       JInternal_ClientesR JIClir = new JInternal_ClientesR();
+        openInternalFrame(JIClir);
     }//GEN-LAST:event_Item_clientesRActionPerformed
 
     private void itemCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemCerrarSesionActionPerformed
@@ -193,6 +227,16 @@ public class Jframe_Inicio extends javax.swing.JFrame {
 
         this.dispose();
     }//GEN-LAST:event_itemCerrarSesionActionPerformed
+
+    private void itemMar_CatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemMar_CatActionPerformed
+        JInternal_Marcas_Categ JImar = new JInternal_Marcas_Categ();
+        openInternalFrame(JImar);
+    }//GEN-LAST:event_itemMar_CatActionPerformed
+
+    private void JGestionarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JGestionarCActionPerformed
+        JInternal_ClientesG JICli = new JInternal_ClientesG();
+        openInternalFrame(JICli);
+    }//GEN-LAST:event_JGestionarCActionPerformed
 
     
     
@@ -240,8 +284,11 @@ public class Jframe_Inicio extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem Item_clientesR;
     private javax.swing.JMenuItem Item_registro;
+    private javax.swing.JMenuItem JGestionarC;
     private javax.swing.JDesktopPane destok_inicio;
     private javax.swing.JMenuItem itemCerrarSesion;
+    private javax.swing.JMenuItem itemMar_Cat;
+    private javax.swing.JMenuItem itemProductosR;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -252,7 +299,9 @@ public class Jframe_Inicio extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenu jMenu8;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     // End of variables declaration//GEN-END:variables

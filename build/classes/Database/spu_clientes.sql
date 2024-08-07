@@ -25,13 +25,7 @@ CREATE PROCEDURE spu_clientes_create(
 )	
 BEGIN 
 	DECLARE _idpersona INT; 
-    
-    IF _fechaNac = '' THEN SET _fechaNac = NULL;
-    END IF;
-    
-    IF _telefono = '' THEN SET _telefono = NULL;
-    END IF;
-    
+
 	INSERT INTO PERSONAS (nombres, apellidos, dni , fechaNac, telefono)
 			VALUES (_nombres, _apellidos , _dni, _fechaNac, _telefono);
 		 
@@ -45,16 +39,17 @@ CALL spu_clientes_create ('Maritza','Gonzales Salazar','73199911','1998-12-22', 
 
 -- CAMBIAR ESTADO DE CLIENTE --
 DELIMITER //
-CREATE PROCEDURE spu_clientes_delete(IN _idcliente INT)
+CREATE PROCEDURE spu_clientes_delete(IN _idpersona INT)
 BEGIN 
 	UPDATE CLIENTES
     SET estado = 0	
-    WHERE idcliente = _idcliente;
+    WHERE idpersona = _idpersona;
 END //
 DELIMITER ;
 
 CALL spu_clientes_delete(1);
 
+select * from clientes
 
 
 

@@ -14,6 +14,8 @@ public class Jframe_login extends javax.swing.JFrame {
     public Jframe_login() {
         initComponents();
         this.setLocationRelativeTo(this);
+        
+      
     }
 
  
@@ -107,7 +109,8 @@ public class Jframe_login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
+    
+    private void iniciarSesion(){
         String user = txtUsername.getText();
         char[] passwordChars = txtClave.getPassword();
         String clave = new String(passwordChars);
@@ -129,6 +132,11 @@ public class Jframe_login extends javax.swing.JFrame {
           
           txtUsername.requestFocus();
       }
+        
+    }
+    
+    private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
+        iniciarSesion();
         
       
     }//GEN-LAST:event_btnIniciarActionPerformed

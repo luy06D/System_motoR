@@ -50,7 +50,7 @@ BEGIN
 END //
 DELIMITER ;
 
-CALL spu_personas_update (1,'Alex','Padilla','12345678','2002-01-06', '123456789');
+CALL spu_personas_update (8,'Alex','Padilla','78767656','2002-01-06', '123456789');
 
 
 
