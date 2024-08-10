@@ -9,6 +9,7 @@ public class Jframe_Inicio extends javax.swing.JFrame {
     public Jframe_Inicio() {
         initComponents();
         this.setLocationRelativeTo(this);
+        setExtendedState(Jframe_Inicio.MAXIMIZED_BOTH);
     }
     
     @SuppressWarnings("unchecked")
@@ -26,7 +27,7 @@ public class Jframe_Inicio extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
         itemProductosR = new javax.swing.JMenuItem();
         itemMar_Cat = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        itemProductoG = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         Item_registro = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
@@ -111,8 +112,13 @@ public class Jframe_Inicio extends javax.swing.JFrame {
         });
         jMenu3.add(itemMar_Cat);
 
-        jMenuItem4.setText("Gestionar Productos");
-        jMenu3.add(jMenuItem4);
+        itemProductoG.setText("Gestionar Productos");
+        itemProductoG.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemProductoGActionPerformed(evt);
+            }
+        });
+        jMenu3.add(itemProductoG);
 
         jMenuBar1.add(jMenu3);
 
@@ -238,6 +244,11 @@ public class Jframe_Inicio extends javax.swing.JFrame {
         openInternalFrame(JICli);
     }//GEN-LAST:event_JGestionarCActionPerformed
 
+    private void itemProductoGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemProductoGActionPerformed
+        JInternal_repuestosR JIrepu = new JInternal_repuestosR();
+        openInternalFrame(JIrepu);
+    }//GEN-LAST:event_itemProductoGActionPerformed
+
     
     
     
@@ -288,6 +299,7 @@ public class Jframe_Inicio extends javax.swing.JFrame {
     private javax.swing.JDesktopPane destok_inicio;
     private javax.swing.JMenuItem itemCerrarSesion;
     private javax.swing.JMenuItem itemMar_Cat;
+    private javax.swing.JMenuItem itemProductoG;
     private javax.swing.JMenuItem itemProductosR;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
@@ -301,7 +313,6 @@ public class Jframe_Inicio extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     // End of variables declaration//GEN-END:variables

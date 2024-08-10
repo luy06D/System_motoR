@@ -19,6 +19,17 @@ BEGIN
 END // 
 DELIMITER ;
 
+CALL spu_repuestos_create(
+    1, 
+    2, 
+    'ACEITE', 
+    'AM-1040', 
+    29.50, 
+    'L', 
+    'Sin garantia', 
+    'Aceite de motor semi-sintético 4T' 
+);
+
 -- ACTUALIZAR REPUESTOS -- 
 DELIMITER // 
 CREATE PROCEDURE spu_repuestos_update(
