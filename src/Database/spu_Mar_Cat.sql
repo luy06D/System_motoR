@@ -8,6 +8,8 @@ BEGIN
 END //
 DELIMITER ;
 
+CALL spu_marcas_create("KENDA");
+
 -- REGISTRAR CATEGORIA 
 DELIMITER //
 CREATE PROCEDURE spu_categorias_create(
@@ -15,8 +17,11 @@ IN _categoria VARCHAR(40),
 IN _descripcion VARCHAR(100)
 )
 BEGIN 
-	INSERT INTO CATEGORIA (categoria , descripcion)
+	INSERT INTO CATEGORIAS (categoria , descripcion)
 		VALUES (_categoria, _descripcion);	
 
 END // 
 DELIMITER ;
+
+CALL spu_categorias_create("LLantas","De todo tamaño");
+
