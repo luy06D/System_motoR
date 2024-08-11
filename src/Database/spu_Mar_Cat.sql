@@ -23,5 +23,5 @@ BEGIN
 END // 
 DELIMITER ;
 
-CALL spu_categorias_create("LLantas","De todo tamaño");
+CALL spu_categorias_create("LLANTAS","De todo tamaño");
 

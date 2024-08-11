@@ -7,8 +7,7 @@ import java.sql.Connection;
 import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
+import java.sql.PreparedStatement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -16,8 +15,11 @@ public class MarcaDAO implements Marca_Interface {
     Conexion conexion = new Conexion();
     Connection connec;
     CallableStatement cs;
+    PreparedStatement ps;
     ResultSet rs;
     Marca mar;
+    
+    ArrayList<Marca> vm = new ArrayList<>();
 
     @Override
     public boolean createMarca(Marca mar) {
@@ -36,5 +38,29 @@ public class MarcaDAO implements Marca_Interface {
         
     return false;
     }
+
+    @Override
+    public ArrayList<Marca> getMarcas() {
+        try{
+            String querySelect = "SELECT * FROM MARCAS";
+            connec = conexion.getConexion();
+            ps = connec.prepareStatement(querySelect);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                mar = new Marca();
+             //   mar.setIdmarca(Integer.parseInt(rs.getString("idmarca")));
+                mar.setMarca(rs.getString("marca"));
+                vm.add(mar);
+            }
+            
+            connec.close();
+            
+        }catch(Exception ex){
+            Logger.getLogger(MarcaDAO.class.getName()).log(Level.SEVERE, null , ex);   
+        }
+        
+        return vm;
+    }
+    
     
 }

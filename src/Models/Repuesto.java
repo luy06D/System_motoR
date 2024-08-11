@@ -15,7 +15,7 @@ public class Repuesto {
     private String unidad_med;
     private String garantia;
     private String descripcion;
-    private boolean estado;
+    private String estado;
     private LocalDateTime create_at;
 
     public int getIdrepuesto() {
@@ -98,11 +98,11 @@ public class Repuesto {
         this.descripcion = descripcion;
     }
 
-    public boolean isEstado() {
+    public String isEstado() {
         return estado;
     }
 
-    public void setEstado(boolean estado) {
+    public void setEstado(String estado) {
         this.estado = estado;
     }
 

@@ -111,7 +111,7 @@ public class ClienteDAO implements Cliente_Interface{
                 map.put("dni", rs.getString("dni"));
                 map.put("fechaNac", rs.getDate("fechaNac").toLocalDate());
                 map.put("telefono", rs.getString("telefono"));
-                map.put("estado", rs.getBoolean("estado"));
+                map.put("estado", rs.getString("estado"));
                 vectorCli.add(map);
             }
             

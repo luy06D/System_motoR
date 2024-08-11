@@ -7,8 +7,7 @@ BEGIN
 	SELECT idcliente, CLI.idpersona, nombres, apellidos,
 			dni, fechaNac, telefono, estado 
     FROM CLIENTES CLI
-    INNER JOIN PERSONAS PE ON CLI.idpersona = PE.idpersona
-    WHERE CLI.estado = 1;
+    INNER JOIN PERSONAS PE ON CLI.idpersona = PE.idpersona;
 END //
 DELIMITER ;
 	
@@ -42,14 +41,13 @@ DELIMITER //
 CREATE PROCEDURE spu_clientes_delete(IN _idpersona INT)
 BEGIN 
 	UPDATE CLIENTES
-    SET estado = 0	
+    SET estado = 'INACTIVO'	
     WHERE idpersona = _idpersona;
 END //
 DELIMITER ;
 
 CALL spu_clientes_delete(1);
 
-select * from clientes
 
 
 

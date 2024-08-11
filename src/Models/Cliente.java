@@ -8,7 +8,7 @@ public class Cliente {
     
     private int idcliente;
     private int idpersona;
-    private boolean estado;
+    private String estado;
     private LocalDateTime create_at;
 
     public int getIdcliente() {
@@ -27,11 +27,11 @@ public class Cliente {
         this.idpersona = idpersona;
     }
 
-    public boolean isEstado() {
+    public String isEstado() {
         return estado;
     }
 
-    public void setEstado(boolean estado) {
+    public void setEstado(String estado) {
         this.estado = estado;
     }
 
