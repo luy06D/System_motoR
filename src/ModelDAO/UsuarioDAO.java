@@ -44,7 +44,23 @@ public class UsuarioDAO implements Usuario_Interface{
 
     @Override
     public boolean createUser(Usuario usu) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        try{
+            String queryInsert = "{CALL spu_usuarios_create(?,?,?,?)}";
+            connec = conexion.getConexion();
+            cs = connec.prepareCall(queryInsert);
+            cs.setInt(1, usu.getIdpersona());
+            cs.setString(2, usu.getUsername());
+            cs.setString(2, usu.getClave_acceso());
+            cs.setString(2, usu.getNivel_acceso());
+            
+            cs.executeUpdate();
+            connec.close();
+            
+        }catch(Exception ex){
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex); 
+        }
+        
+        return false;
     }
 
     @Override

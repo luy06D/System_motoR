@@ -22,8 +22,8 @@ public class Jframe_Inicio extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu5 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        ItemUsuarioR = new javax.swing.JMenuItem();
+        ItemUsuarioG = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         itemProductosR = new javax.swing.JMenuItem();
         itemMar_Cat = new javax.swing.JMenuItem();
@@ -43,24 +43,27 @@ public class Jframe_Inicio extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setText("por verrr .....");
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel1.setText("BY LUIS_D");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(94, 94, 94)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(113, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(523, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(478, 478, 478))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(69, 69, 69)
-                .addComponent(jLabel1)
-                .addContainerGap(107, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(302, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(134, 134, 134))
         );
 
         destok_inicio.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -69,42 +72,48 @@ public class Jframe_Inicio extends javax.swing.JFrame {
         destok_inicio.setLayout(destok_inicioLayout);
         destok_inicioLayout.setHorizontalGroup(
             destok_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(destok_inicioLayout.createSequentialGroup()
-                .addGap(250, 250, 250)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(378, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         destok_inicioLayout.setVerticalGroup(
             destok_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(destok_inicioLayout.createSequentialGroup()
-                .addGap(110, 110, 110)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(233, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jMenu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Inicio/usuario.png"))); // NOI18N
         jMenu5.setText("USUARIOS     ");
         jMenu5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
-        jMenuItem2.setText("Nuevo Usuario");
-        jMenu5.add(jMenuItem2);
+        ItemUsuarioR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Inicio/agregar-usuario.png"))); // NOI18N
+        ItemUsuarioR.setText("NUEVO USUARIO");
+        ItemUsuarioR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ItemUsuarioRActionPerformed(evt);
+            }
+        });
+        jMenu5.add(ItemUsuarioR);
 
-        jMenuItem3.setText("Gestionar Usuarios");
-        jMenu5.add(jMenuItem3);
+        ItemUsuarioG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Inicio/usuarios-alt.png"))); // NOI18N
+        ItemUsuarioG.setText("GESTIONAR USUARIOS");
+        ItemUsuarioG.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ItemUsuarioGActionPerformed(evt);
+            }
+        });
+        jMenu5.add(ItemUsuarioG);
 
         jMenuBar1.add(jMenu5);
 
-        jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Inicio/agregar-producto.png"))); // NOI18N
-        jMenu3.setText("PRODUCTOS     ");
+        jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Inicio/dia-laboral.png"))); // NOI18N
+        jMenu3.setText("REPUESTOS     ");
         jMenu3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jMenu3.setMargin(new java.awt.Insets(3, 1, 3, 6));
 
         itemProductosR.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        itemProductosR.setText("Nuevo Producto");
+        itemProductosR.setText("NUEVO REPUESTO");
         jMenu3.add(itemProductosR);
 
         itemMar_Cat.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        itemMar_Cat.setText("Registro Marcas/Categ");
+        itemMar_Cat.setText("REG. MARCAS/CAT");
         itemMar_Cat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 itemMar_CatActionPerformed(evt);
@@ -112,7 +121,7 @@ public class Jframe_Inicio extends javax.swing.JFrame {
         });
         jMenu3.add(itemMar_Cat);
 
-        itemProductoG.setText("Gestionar Productos");
+        itemProductoG.setText("GESTIONAR  REPUESTOS");
         itemProductoG.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 itemProductoGActionPerformed(evt);
@@ -127,12 +136,7 @@ public class Jframe_Inicio extends javax.swing.JFrame {
         jMenu2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jMenu2.setMargin(new java.awt.Insets(3, 1, 3, 6));
 
-        Item_registro.setText("Nueva Venta");
-        Item_registro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Item_registroActionPerformed(evt);
-            }
-        });
+        Item_registro.setText("NUEVA VENTA");
         jMenu2.add(Item_registro);
 
         jMenuBar1.add(jMenu2);
@@ -144,7 +148,7 @@ public class Jframe_Inicio extends javax.swing.JFrame {
 
         Item_clientesR.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         Item_clientesR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Inicio/atencion-al-cliente.png"))); // NOI18N
-        Item_clientesR.setText("Nuevo Cliente");
+        Item_clientesR.setText("NUEVO CLIENTE");
         Item_clientesR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Item_clientesRActionPerformed(evt);
@@ -153,7 +157,7 @@ public class Jframe_Inicio extends javax.swing.JFrame {
         jMenu4.add(Item_clientesR);
 
         JGestionarC.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        JGestionarC.setText("Gestionar Clientes");
+        JGestionarC.setText("GESTIONAR CLIENTES");
         JGestionarC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JGestionarCActionPerformed(evt);
@@ -218,10 +222,6 @@ public class Jframe_Inicio extends javax.swing.JFrame {
         frame.setVisible(true);
      }
      
-    private void Item_registroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Item_registroActionPerformed
-        
-    }//GEN-LAST:event_Item_registroActionPerformed
-
     private void Item_clientesRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Item_clientesRActionPerformed
        JInternal_ClientesR JIClir = new JInternal_ClientesR();
         openInternalFrame(JIClir);
@@ -248,6 +248,16 @@ public class Jframe_Inicio extends javax.swing.JFrame {
         JInternal_repuestosR JIrepu = new JInternal_repuestosR();
         openInternalFrame(JIrepu);
     }//GEN-LAST:event_itemProductoGActionPerformed
+
+    private void ItemUsuarioRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemUsuarioRActionPerformed
+       JInternal_UsuariosR JIusuR = new JInternal_UsuariosR();
+        openInternalFrame(JIusuR); 
+    }//GEN-LAST:event_ItemUsuarioRActionPerformed
+
+    private void ItemUsuarioGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemUsuarioGActionPerformed
+        JInternal_UsuariosG JIusuG = new JInternal_UsuariosG();
+        openInternalFrame(JIusuG);
+    }//GEN-LAST:event_ItemUsuarioGActionPerformed
 
     
     
@@ -293,6 +303,8 @@ public class Jframe_Inicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem ItemUsuarioG;
+    private javax.swing.JMenuItem ItemUsuarioR;
     private javax.swing.JMenuItem Item_clientesR;
     private javax.swing.JMenuItem Item_registro;
     private javax.swing.JMenuItem JGestionarC;
@@ -311,8 +323,6 @@ public class Jframe_Inicio extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenu jMenu8;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     // End of variables declaration//GEN-END:variables
