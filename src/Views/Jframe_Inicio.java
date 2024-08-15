@@ -21,9 +21,6 @@ public class Jframe_Inicio extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu5 = new javax.swing.JMenu();
-        ItemUsuarioR = new javax.swing.JMenuItem();
-        ItemUsuarioG = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         itemProductosR = new javax.swing.JMenuItem();
         itemMar_Cat = new javax.swing.JMenuItem();
@@ -35,8 +32,9 @@ public class Jframe_Inicio extends javax.swing.JFrame {
         JGestionarC = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
         jMenu7 = new javax.swing.JMenu();
-        jMenu1 = new javax.swing.JMenu();
-        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        jMenu5 = new javax.swing.JMenu();
+        ItemUsuarioR = new javax.swing.JMenuItem();
+        ItemUsuarioG = new javax.swing.JMenuItem();
         itemCerrarSesion = new javax.swing.JMenuItem();
 
         jMenu8.setText("jMenu8");
@@ -79,30 +77,6 @@ public class Jframe_Inicio extends javax.swing.JFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jMenu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Inicio/usuario.png"))); // NOI18N
-        jMenu5.setText("USUARIOS     ");
-        jMenu5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-
-        ItemUsuarioR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Inicio/agregar-usuario.png"))); // NOI18N
-        ItemUsuarioR.setText("NUEVO USUARIO");
-        ItemUsuarioR.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ItemUsuarioRActionPerformed(evt);
-            }
-        });
-        jMenu5.add(ItemUsuarioR);
-
-        ItemUsuarioG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Inicio/usuarios-alt.png"))); // NOI18N
-        ItemUsuarioG.setText("GESTIONAR USUARIOS");
-        ItemUsuarioG.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ItemUsuarioGActionPerformed(evt);
-            }
-        });
-        jMenu5.add(ItemUsuarioG);
-
-        jMenuBar1.add(jMenu5);
-
         jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Inicio/dia-laboral.png"))); // NOI18N
         jMenu3.setText("REPUESTOS     ");
         jMenu3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -110,6 +84,11 @@ public class Jframe_Inicio extends javax.swing.JFrame {
 
         itemProductosR.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         itemProductosR.setText("NUEVO REPUESTO");
+        itemProductosR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemProductosRActionPerformed(evt);
+            }
+        });
         jMenu3.add(itemProductosR);
 
         itemMar_Cat.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -177,13 +156,27 @@ public class Jframe_Inicio extends javax.swing.JFrame {
         jMenu7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jMenuBar1.add(jMenu7);
 
-        jMenu1.setBackground(new java.awt.Color(102, 102, 0));
-        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Inicio/pagina-de-inicio.png"))); // NOI18N
-        jMenu1.setText("INICIO     ");
-        jMenu1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jMenu1.setMargin(new java.awt.Insets(3, 1, 3, 6));
-        jMenu1.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Inicio/pagina-de-inicio.png"))); // NOI18N
-        jMenu1.add(jSeparator1);
+        jMenu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Inicio/usuario.png"))); // NOI18N
+        jMenu5.setText("USUARIOS     ");
+        jMenu5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+
+        ItemUsuarioR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Inicio/agregar-usuario.png"))); // NOI18N
+        ItemUsuarioR.setText("NUEVO USUARIO");
+        ItemUsuarioR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ItemUsuarioRActionPerformed(evt);
+            }
+        });
+        jMenu5.add(ItemUsuarioR);
+
+        ItemUsuarioG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Inicio/usuarios-alt.png"))); // NOI18N
+        ItemUsuarioG.setText("GESTIONAR USUARIOS");
+        ItemUsuarioG.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ItemUsuarioGActionPerformed(evt);
+            }
+        });
+        jMenu5.add(ItemUsuarioG);
 
         itemCerrarSesion.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         itemCerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Inicio/salir-alt.png"))); // NOI18N
@@ -193,9 +186,9 @@ public class Jframe_Inicio extends javax.swing.JFrame {
                 itemCerrarSesionActionPerformed(evt);
             }
         });
-        jMenu1.add(itemCerrarSesion);
+        jMenu5.add(itemCerrarSesion);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(jMenu5);
 
         setJMenuBar(jMenuBar1);
 
@@ -245,7 +238,7 @@ public class Jframe_Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_JGestionarCActionPerformed
 
     private void itemProductoGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemProductoGActionPerformed
-        JInternal_repuestosR JIrepu = new JInternal_repuestosR();
+        JInternal_repuestosG JIrepu = new JInternal_repuestosG();
         openInternalFrame(JIrepu);
     }//GEN-LAST:event_itemProductoGActionPerformed
 
@@ -258,6 +251,11 @@ public class Jframe_Inicio extends javax.swing.JFrame {
         JInternal_UsuariosG JIusuG = new JInternal_UsuariosG();
         openInternalFrame(JIusuG);
     }//GEN-LAST:event_ItemUsuarioGActionPerformed
+
+    private void itemProductosRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemProductosRActionPerformed
+       JInternal_RepuestosR JIrepuR = new JInternal_RepuestosR();
+        openInternalFrame(JIrepuR);
+    }//GEN-LAST:event_itemProductosRActionPerformed
 
     
     
@@ -314,7 +312,6 @@ public class Jframe_Inicio extends javax.swing.JFrame {
     private javax.swing.JMenuItem itemProductoG;
     private javax.swing.JMenuItem itemProductosR;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
@@ -324,6 +321,5 @@ public class Jframe_Inicio extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu8;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPopupMenu.Separator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }
