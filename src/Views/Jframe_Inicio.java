@@ -126,7 +126,6 @@ public class Jframe_Inicio extends javax.swing.JFrame {
         jMenu4.setMargin(new java.awt.Insets(3, 1, 3, 6));
 
         Item_clientesR.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        Item_clientesR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Inicio/atencion-al-cliente.png"))); // NOI18N
         Item_clientesR.setText("NUEVO CLIENTE");
         Item_clientesR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -160,7 +159,6 @@ public class Jframe_Inicio extends javax.swing.JFrame {
         jMenu5.setText("USUARIOS     ");
         jMenu5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
-        ItemUsuarioR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Inicio/agregar-usuario.png"))); // NOI18N
         ItemUsuarioR.setText("NUEVO USUARIO");
         ItemUsuarioR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -169,7 +167,6 @@ public class Jframe_Inicio extends javax.swing.JFrame {
         });
         jMenu5.add(ItemUsuarioR);
 
-        ItemUsuarioG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Inicio/usuarios-alt.png"))); // NOI18N
         ItemUsuarioG.setText("GESTIONAR USUARIOS");
         ItemUsuarioG.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -179,8 +176,7 @@ public class Jframe_Inicio extends javax.swing.JFrame {
         jMenu5.add(ItemUsuarioG);
 
         itemCerrarSesion.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        itemCerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Inicio/salir-alt.png"))); // NOI18N
-        itemCerrarSesion.setText("Cerrar Sesión");
+        itemCerrarSesion.setText("CERRAR SESIÓN");
         itemCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 itemCerrarSesionActionPerformed(evt);
@@ -238,7 +234,7 @@ public class Jframe_Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_JGestionarCActionPerformed
 
     private void itemProductoGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemProductoGActionPerformed
-        JInternal_repuestosG JIrepu = new JInternal_repuestosG();
+        JInternal_RepuestosG JIrepu = new JInternal_RepuestosG();
         openInternalFrame(JIrepu);
     }//GEN-LAST:event_itemProductoGActionPerformed
 
