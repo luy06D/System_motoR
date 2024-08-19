@@ -234,7 +234,7 @@ public class Jframe_Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_JGestionarCActionPerformed
 
     private void itemProductoGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemProductoGActionPerformed
-        JInternal_RepuestosG JIrepu = new JInternal_RepuestosG();
+        JInternal_RepuestosG1 JIrepu = new JInternal_RepuestosG1();
         openInternalFrame(JIrepu);
     }//GEN-LAST:event_itemProductoGActionPerformed
 

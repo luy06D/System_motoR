@@ -110,7 +110,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="REGISTRO DE REPUESTO"/>
+                <Property name="text" type="java.lang.String" value="REGISTRO DE REPUESTOS"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -242,11 +242,14 @@
             <Component class="javax.swing.JComboBox" name="cbGarantia">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="4">
-                    <StringItem index="0" value="Item 1"/>
-                    <StringItem index="1" value="Item 2"/>
-                    <StringItem index="2" value="Item 3"/>
-                    <StringItem index="3" value="Item 4"/>
+                  <StringArray count="7">
+                    <StringItem index="0" value="SIN GARANTIA"/>
+                    <StringItem index="1" value="3 MESES"/>
+                    <StringItem index="2" value="4 MESES"/>
+                    <StringItem index="3" value="1 A&#xd1;O"/>
+                    <StringItem index="4" value="2 A&#xd1;OS"/>
+                    <StringItem index="5" value="3 A&#xd1;OS"/>
+                    <StringItem index="6" value=" "/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -262,11 +265,8 @@
             <Component class="javax.swing.JComboBox" name="cbMarca">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="4">
-                    <StringItem index="0" value="Item 1"/>
-                    <StringItem index="1" value="Item 2"/>
-                    <StringItem index="2" value="Item 3"/>
-                    <StringItem index="3" value="Item 4"/>
+                  <StringArray count="1">
+                    <StringItem index="0" value="---"/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -282,11 +282,8 @@
             <Component class="javax.swing.JComboBox" name="cbCategoria">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="4">
-                    <StringItem index="0" value="Item 1"/>
-                    <StringItem index="1" value="Item 2"/>
-                    <StringItem index="2" value="Item 3"/>
-                    <StringItem index="3" value="Item 4"/>
+                  <StringArray count="1">
+                    <StringItem index="0" value="---"/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -302,11 +299,17 @@
             <Component class="javax.swing.JComboBox" name="cbUni">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="4">
-                    <StringItem index="0" value="Item 1"/>
-                    <StringItem index="1" value="Item 2"/>
-                    <StringItem index="2" value="Item 3"/>
-                    <StringItem index="3" value="Item 4"/>
+                  <StringArray count="10">
+                    <StringItem index="0" value="---"/>
+                    <StringItem index="1" value="PCS"/>
+                    <StringItem index="2" value="L"/>
+                    <StringItem index="3" value="ML"/>
+                    <StringItem index="4" value="MM"/>
+                    <StringItem index="5" value="SETS"/>
+                    <StringItem index="6" value="M"/>
+                    <StringItem index="7" value="CM"/>
+                    <StringItem index="8" value="IN"/>
+                    <StringItem index="9" value="UNI"/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -400,14 +403,15 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTable" name="jTable1">
+            <Component class="javax.swing.JTable" name="tbRepuestosR">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="4" rowCount="4">
-                    <Column editable="true" title="REPUESTO" type="java.lang.Object"/>
-                    <Column editable="true" title="MARCA" type="java.lang.Object"/>
-                    <Column editable="true" title="MODELO" type="java.lang.Object"/>
-                    <Column editable="true" title="CATEGORIA" type="java.lang.Object"/>
+                  <Table columnCount="5" rowCount="4">
+                    <Column editable="false" title="REPUESTO" type="java.lang.Object"/>
+                    <Column editable="false" title="MARCA" type="java.lang.Object"/>
+                    <Column editable="false" title="MODELO" type="java.lang.Object"/>
+                    <Column editable="false" title="CATEGORIA" type="java.lang.Object"/>
+                    <Column editable="false" title="PRECIO" type="java.lang.Object"/>
                   </Table>
                 </Property>
               </Properties>

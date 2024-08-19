@@ -12,7 +12,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 
-public class JInternal_RepuestosG extends javax.swing.JInternalFrame {
+public class JInternal_RepuestosG1 extends javax.swing.JInternalFrame {
     
     MarcaDAO Mdao = new MarcaDAO();
     CategoriaDAO Cdao = new CategoriaDAO();
@@ -20,7 +20,7 @@ public class JInternal_RepuestosG extends javax.swing.JInternalFrame {
     DefaultTableModel tableRepues = new DefaultTableModel();
     
     
-    public JInternal_RepuestosG() {
+    public JInternal_RepuestosG1() {
         initComponents();
         getMarcas();
         getCategorias();
