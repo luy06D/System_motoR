@@ -6,8 +6,10 @@ import ModelDAO.MarcaDAO;
 import ModelDAO.RepuestoDAO;
 import Models.Categoria;
 import Models.Marca;
+import Models.Repuesto;
 import java.util.ArrayList;
 import java.util.HashMap;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -44,7 +46,7 @@ public class JInternal_RepuestosR extends javax.swing.JInternalFrame {
     }
     
         
-     private void getMarcas(){
+    private void getMarcas(){
         ArrayList<Marca> Marcas = Mdao.getMarcas(); 
         for(Marca marc : Marcas){
             cbMarca.addItem(marc.getMarca());
@@ -58,9 +60,6 @@ public class JInternal_RepuestosR extends javax.swing.JInternalFrame {
         }
     }
         
-        
-        
-
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -83,7 +82,7 @@ public class JInternal_RepuestosR extends javax.swing.JInternalFrame {
         cbUni = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        txtMarca = new javax.swing.JTextField();
+        txtModelo = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtDescripcion = new javax.swing.JTextArea();
         jLabel7 = new javax.swing.JLabel();
@@ -186,7 +185,7 @@ public class JInternal_RepuestosR extends javax.swing.JInternalFrame {
                                     .addComponent(jLabel5))))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addGap(20, 20, 20))
         );
@@ -210,7 +209,7 @@ public class JInternal_RepuestosR extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cbCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(41, 41, 41)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -232,6 +231,11 @@ public class JInternal_RepuestosR extends javax.swing.JInternalFrame {
         btnLimpiar.setText("LIMPIAR");
 
         btnRegistrar.setText("REGISTRAR");
+        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -283,9 +287,9 @@ public class JInternal_RepuestosR extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 697, Short.MAX_VALUE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 703, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16))
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
@@ -304,9 +308,7 @@ public class JInternal_RepuestosR extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -315,6 +317,22 @@ public class JInternal_RepuestosR extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+      Repuesto rep = new Repuesto();
+      
+      rep.setNombreR(txtRepuesto.getText());
+      rep.setIdmarca(Integer.parseInt(cbMarca.getSelectedItem().toString()));
+      rep.setIdcategoria(Integer.parseInt(cbCategoria.getSelectedItem().toString()));
+      rep.setModelo(txtModelo.getText());
+      rep.setUnidad_med(cbUni.getSelectedItem().toString());
+      rep.setPrecio(Double.parseDouble(txtPrecio.getText()));
+      rep.setGarantia(cbGarantia.getSelectedItem().toString());
+      rep.setDescripcion(txtDescripcion.getText());
+      Rdao.insertRepuesto(rep);
+      JOptionPane.showMessageDialog(this, "Registrado correctamente" , "Repuesto", JOptionPane.INFORMATION_MESSAGE);
+      
+    }//GEN-LAST:event_btnRegistrarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -341,7 +359,7 @@ public class JInternal_RepuestosR extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tbRepuestosR;
     private javax.swing.JTextArea txtDescripcion;
-    private javax.swing.JTextField txtMarca;
+    private javax.swing.JTextField txtModelo;
     private javax.swing.JTextField txtPrecio;
     private javax.swing.JTextField txtRepuesto;
     // End of variables declaration//GEN-END:variables
