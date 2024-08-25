@@ -9,21 +9,28 @@ import Models.Marca;
 import Models.Repuesto;
 import java.util.ArrayList;
 import java.util.HashMap;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 
 public class JInternal_RepuestosR extends javax.swing.JInternalFrame {
     
+    ArrayList<Marca> vm = new ArrayList<>();
     MarcaDAO Mdao = new MarcaDAO();
+    Marca m;
+    
+    ArrayList<Categoria> vc = new ArrayList<>();
     CategoriaDAO Cdao = new CategoriaDAO();
+    Categoria c;
+    
     RepuestoDAO Rdao = new RepuestoDAO();
 
     public JInternal_RepuestosR() {
         initComponents();
+        listarRepuestos();
         getMarcas();
         getCategorias();
-        listarRepuestos();
     }
     
     private void listarRepuestos(){
@@ -47,17 +54,32 @@ public class JInternal_RepuestosR extends javax.swing.JInternalFrame {
     
         
     private void getMarcas(){
-        ArrayList<Marca> Marcas = Mdao.getMarcas(); 
-        for(Marca marc : Marcas){
-            cbMarca.addItem(marc.getMarca());
-        }
+       vm = Mdao.getMarcas();
+       cbMarca.addItem("Seleccionar");
+       for(int i=0; i<vm.size(); i++){
+           cbMarca.addItem(vm.get(i).getMarca());
+       }
     }
     
     private void getCategorias(){
-        ArrayList<Categoria> Categorias = Cdao.getCategorias();
-        for(Categoria categ : Categorias ){
-            cbCategoria.addItem(categ.getCategoria());
-        }
+       vc = Cdao.getCategorias();
+       cbCategoria.addItem("Seleccionar");
+       for(int i=0; i<vc.size(); i++){
+           cbCategoria.addItem(vc.get(i).getCategoria());
+       }
+        
+    }
+    
+    private void resetForm(){
+        txtRepuesto.setText(null);
+        cbMarca.setSelectedIndex(0);
+        cbCategoria.setSelectedIndex(0);
+        txtModelo.setText(null);
+        cbUni.setSelectedIndex(0);
+        txtPrecio.setText(null);
+        cbGarantia.setSelectedIndex(0);
+        txtDescripcion.setText(null);
+        
     }
         
 
@@ -129,11 +151,7 @@ public class JInternal_RepuestosR extends javax.swing.JInternalFrame {
 
         jLabel5.setText("GARANTIA:");
 
-        cbMarca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---" }));
-
         jLabel2.setText("MARCA:");
-
-        cbCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---" }));
 
         jLabel6.setText("CATEGORIA:");
 
@@ -331,9 +349,13 @@ public class JInternal_RepuestosR extends javax.swing.JInternalFrame {
       rep.setDescripcion(txtDescripcion.getText());
       Rdao.insertRepuesto(rep);
       JOptionPane.showMessageDialog(this, "Registrado correctamente" , "Repuesto", JOptionPane.INFORMATION_MESSAGE);
-      
+      resetForm();
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
+    
+    
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLimpiar;

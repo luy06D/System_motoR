@@ -48,7 +48,7 @@ public class MarcaDAO implements Marca_Interface {
             rs = ps.executeQuery();
             while(rs.next()){
                 mar = new Marca();
-             //   mar.setIdmarca(Integer.parseInt(rs.getString("idmarca")));
+                mar.setIdmarca(Integer.parseInt(rs.getString("idmarca")));
                 mar.setMarca(rs.getString("marca"));
                 vm.add(mar);
             }
