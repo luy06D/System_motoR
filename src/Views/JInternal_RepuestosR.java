@@ -339,9 +339,17 @@ public class JInternal_RepuestosR extends javax.swing.JInternalFrame {
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
       Repuesto rep = new Repuesto();
       
+      String marca = cbMarca.getSelectedItem().toString();
+      int idmarca = Mdao.listarOne(marca);
+      rep.setIdmarca(idmarca);
+        System.out.println(idmarca);
+      
+      String categoria = cbCategoria.getSelectedItem().toString();
+      int idCategoria = Cdao.listarOne(categoria);
+      rep.setIdcategoria(idCategoria);
+        System.out.println(idCategoria);
+
       rep.setNombreR(txtRepuesto.getText());
-      rep.setIdmarca(Integer.parseInt(cbMarca.getSelectedItem().toString()));
-      rep.setIdcategoria(Integer.parseInt(cbCategoria.getSelectedItem().toString()));
       rep.setModelo(txtModelo.getText());
       rep.setUnidad_med(cbUni.getSelectedItem().toString());
       rep.setPrecio(Double.parseDouble(txtPrecio.getText()));

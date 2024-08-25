@@ -61,6 +61,32 @@ public class MarcaDAO implements Marca_Interface {
         
         return vm;
     }
+
+    @Override
+    public int listarOne(String marca) {
+        int idMarca = -1;
+         try{
+            String querySelect = "SELECT * FROM MARCAS WHERE marca=?";
+            connec = conexion.getConexion();
+            ps = connec.prepareStatement(querySelect);
+            ps.setString(1, marca);
+            rs = ps.executeQuery();
+            if(rs.next()){
+                mar = new Marca();
+                idMarca = rs.getInt("idmarca");
+                    
+            }
+            
+            connec.close();
+            
+        }catch(Exception ex){
+            Logger.getLogger(MarcaDAO.class.getName()).log(Level.SEVERE, null , ex);   
+        }
+        
+        return idMarca;
+        
+    }
+    
     
     
 }

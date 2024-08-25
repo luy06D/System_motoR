@@ -68,9 +68,32 @@ public class CategoriaDAO implements Categoria_Interface {
         }
         
         return vc;
+
+    }
+
+    @Override
+    public int listarOne(String categoria) {
+          int idCategoria = -1;
+         try{
+            String querySelect = "SELECT * FROM CATEGORIAS WHERE categoria=?";
+            connec = conexion.getConexion();
+            ps = connec.prepareStatement(querySelect);
+            ps.setString(1, categoria);
+            rs = ps.executeQuery();
+            if(rs.next()){
+                cat = new Categoria();
+                idCategoria = rs.getInt("idcategoria");
+                    
+            }
+            
+            connec.close();
+            
+        }catch(Exception ex){
+            Logger.getLogger(CategoriaDAO.class.getName()).log(Level.SEVERE, null , ex);   
+        }
         
+        return idCategoria;
        
-     
     }
     
     
