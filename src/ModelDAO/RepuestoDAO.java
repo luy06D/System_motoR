@@ -50,7 +50,29 @@ public class RepuestoDAO implements Repuesto_Interface{
 
     @Override
     public boolean updateRepuesto(Repuesto rep) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+           try{
+            String querInsert = "{CALL spu_repuestos_update(?,?,?,?,?,?,?,?)}";
+            connec = conexion.getConexion();
+            cs = connec.prepareCall(querInsert);
+            cs.setInt(1, rep.getIdrepuesto());
+            cs.setInt(2, rep.getIdmarca());
+            cs.setInt(3, rep.getIdcategoria());
+            cs.setString(4, rep.getNombreR());
+            cs.setString(5, rep.getModelo());
+            cs.setDouble(6, rep.getPrecio());
+            cs.setString(7, rep.getUnidad_med());
+            cs.setString(8, rep.getGarantia());
+          //  cs.setString(9, rep.getDescripcion());
+            
+            cs.executeUpdate();
+            connec.close();
+            
+        }catch(Exception ex){
+          Logger.getLogger(RepuestoDAO.class.getName()).log(Level.SEVERE, null , ex);    
+        }
+        
+        return false;
+        
     }
 
     @Override

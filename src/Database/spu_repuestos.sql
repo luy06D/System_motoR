@@ -44,8 +44,8 @@ IN _nombreR VARCHAR(40),
 IN _modelo VARCHAR(30),
 IN _precio DECIMAL(5,2),
 IN _unidad_med VARCHAR(5),
-IN _garantia VARCHAR(30),
-IN _descripcion	VARCHAR(100)
+IN _garantia VARCHAR(30)
+-- IN _descripcion	VARCHAR(100)
 )
 BEGIN 
 	UPDATE REPUESTOS 
@@ -55,8 +55,8 @@ BEGIN
         modelo = _modelo,
         precio = _precio,
         unidad_med = _unidad_med,
-        garantia = _garantia,
-        descripcion = _descripcion
+        garantia = _garantia
+       -- descripcion = _descripcion
 	WHERE idrepuesto = _idrepuesto;
 
 END //

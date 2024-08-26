@@ -19,13 +19,12 @@ public class UsuarioDAO implements Usuario_Interface{
     Usuario usu;
     
     @Override
-    public Usuario Login(String username, String password) {
+    public Usuario Login(String username) {
        try{
            String queryLogin = "{CALL spu_usuarios_login(?)}";
            connec = conexion.getConexion();
            cs = connec.prepareCall(queryLogin);
            cs.setString(1, username);
-          // cs.setString(2, password);
            rs = cs.executeQuery();
            if(rs.next()){
                usu = new Usuario();

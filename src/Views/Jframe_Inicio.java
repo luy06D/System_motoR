@@ -23,15 +23,16 @@ public class Jframe_Inicio extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
         itemProductosR = new javax.swing.JMenuItem();
-        itemMar_Cat = new javax.swing.JMenuItem();
         itemProductoG = new javax.swing.JMenuItem();
+        itemConsultaRepu = new javax.swing.JMenuItem();
+        itemMar_Cat = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         Item_registro = new javax.swing.JMenuItem();
+        jMenu6 = new javax.swing.JMenu();
+        jMenu7 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
         Item_clientesR = new javax.swing.JMenuItem();
         JGestionarC = new javax.swing.JMenuItem();
-        jMenu6 = new javax.swing.JMenu();
-        jMenu7 = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
         ItemUsuarioR = new javax.swing.JMenuItem();
         ItemUsuarioG = new javax.swing.JMenuItem();
@@ -52,16 +53,16 @@ public class Jframe_Inicio extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(523, Short.MAX_VALUE)
+                .addContainerGap(525, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(478, 478, 478))
+                .addGap(476, 476, 476))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(302, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(209, 209, 209)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(134, 134, 134))
+                .addContainerGap(228, Short.MAX_VALUE))
         );
 
         destok_inicio.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -91,6 +92,22 @@ public class Jframe_Inicio extends javax.swing.JFrame {
         });
         jMenu3.add(itemProductosR);
 
+        itemProductoG.setText("GESTIONAR  REPUESTOS");
+        itemProductoG.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemProductoGActionPerformed(evt);
+            }
+        });
+        jMenu3.add(itemProductoG);
+
+        itemConsultaRepu.setText("CONSULTA REPUESTOS");
+        itemConsultaRepu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemConsultaRepuActionPerformed(evt);
+            }
+        });
+        jMenu3.add(itemConsultaRepu);
+
         itemMar_Cat.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         itemMar_Cat.setText("REG. MARCAS/CAT");
         itemMar_Cat.addActionListener(new java.awt.event.ActionListener() {
@@ -99,14 +116,6 @@ public class Jframe_Inicio extends javax.swing.JFrame {
             }
         });
         jMenu3.add(itemMar_Cat);
-
-        itemProductoG.setText("GESTIONAR  REPUESTOS");
-        itemProductoG.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itemProductoGActionPerformed(evt);
-            }
-        });
-        jMenu3.add(itemProductoG);
 
         jMenuBar1.add(jMenu3);
 
@@ -119,6 +128,16 @@ public class Jframe_Inicio extends javax.swing.JFrame {
         jMenu2.add(Item_registro);
 
         jMenuBar1.add(jMenu2);
+
+        jMenu6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Inicio/verificar.png"))); // NOI18N
+        jMenu6.setText("COMPRAS     ");
+        jMenu6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jMenuBar1.add(jMenu6);
+
+        jMenu7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Inicio/inventario.png"))); // NOI18N
+        jMenu7.setText("KARDEX     ");
+        jMenu7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jMenuBar1.add(jMenu7);
 
         jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Inicio/nueva-cuenta.png"))); // NOI18N
         jMenu4.setText("CLIENTES     ");
@@ -144,16 +163,6 @@ public class Jframe_Inicio extends javax.swing.JFrame {
         jMenu4.add(JGestionarC);
 
         jMenuBar1.add(jMenu4);
-
-        jMenu6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Inicio/verificar.png"))); // NOI18N
-        jMenu6.setText("COMPRAS     ");
-        jMenu6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jMenuBar1.add(jMenu6);
-
-        jMenu7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Inicio/inventario.png"))); // NOI18N
-        jMenu7.setText("KARDEX     ");
-        jMenu7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jMenuBar1.add(jMenu7);
 
         jMenu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Inicio/usuario.png"))); // NOI18N
         jMenu5.setText("USUARIOS     ");
@@ -253,6 +262,11 @@ public class Jframe_Inicio extends javax.swing.JFrame {
         openInternalFrame(JIrepuR);
     }//GEN-LAST:event_itemProductosRActionPerformed
 
+    private void itemConsultaRepuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemConsultaRepuActionPerformed
+        JInternal_ConsultaRepuestos JIQueryR = new JInternal_ConsultaRepuestos();
+        openInternalFrame(JIQueryR);
+    }//GEN-LAST:event_itemConsultaRepuActionPerformed
+
     
     
     
@@ -304,6 +318,7 @@ public class Jframe_Inicio extends javax.swing.JFrame {
     private javax.swing.JMenuItem JGestionarC;
     private javax.swing.JDesktopPane destok_inicio;
     private javax.swing.JMenuItem itemCerrarSesion;
+    private javax.swing.JMenuItem itemConsultaRepu;
     private javax.swing.JMenuItem itemMar_Cat;
     private javax.swing.JMenuItem itemProductoG;
     private javax.swing.JMenuItem itemProductosR;

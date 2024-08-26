@@ -114,26 +114,31 @@ public class Jframe_login extends javax.swing.JFrame {
         String user = txtUsername.getText();
         char[] passwordChars = txtClave.getPassword();
         String clave = new String(passwordChars);
-        
-        Usuario logueado = usuDAO.Login(user, clave);
-         if (user.isEmpty() || clave.isEmpty()) {
+
+        if (user.isEmpty() || clave.isEmpty()) {
         JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos.", "Login", JOptionPane.WARNING_MESSAGE);
         return; 
-      }
+        } 
+                
+        Usuario logueado = usuDAO.Login(user);
       
-      if(logueado != null){
-        //JOptionPane.showMessageDialog(this, "Bienvenido! " + user , "Login", JOptionPane.INFORMATION_MESSAGE);
-        Jframe_Inicio jInicio = new Jframe_Inicio();
-        jInicio.setVisible(true);
-      }else{
-          JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrecta", "Login", JOptionPane.ERROR_MESSAGE);
-          txtUsername.setText(null);
-          txtClave.setText(null);
-          
-          txtUsername.requestFocus();
+        if(logueado != null){  
+            if(logueado.getClave_acceso().equals(clave)){ 
+                Jframe_Inicio jInicio = new Jframe_Inicio();
+                jInicio.setVisible(true);   
+            }else{
+               JOptionPane.showMessageDialog(this, "Contraseña incorrecta", "Login", JOptionPane.ERROR_MESSAGE);
+               txtClave.setText(null);
+               txtClave.requestFocus();
+            }
+
+        }else{
+            JOptionPane.showMessageDialog(this, "Usuario incorrecto", "Login", JOptionPane.ERROR_MESSAGE);
+            txtUsername.setText(null);
+            txtUsername.requestFocus();
+        }
+
       }
-        
-    }
     
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
         iniciarSesion();

@@ -3,7 +3,9 @@ USE moto_repuestos;
 
 -- LOGEAR USUARIOS --
 DELIMITER //
-CREATE PROCEDURE spu_usuarios_login(IN _username VARCHAR(30))
+CREATE PROCEDURE spu_usuarios_login(
+IN _username VARCHAR(30)
+)
 BEGIN 
 	SELECT idusuario, username, clave_acceso, nivel_acceso,
 			estado
