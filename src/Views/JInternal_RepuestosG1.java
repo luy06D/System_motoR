@@ -90,6 +90,7 @@ public class JInternal_RepuestosG1 extends javax.swing.JInternalFrame {
 
     private void getMarcas(){
         ArrayList<Marca> Marcas = Mdao.getMarcas(); 
+        cbMarca.addItem("Seleccionar");
         for(Marca marc : Marcas){
             cbMarca.addItem(marc.getMarca());
         }
@@ -97,6 +98,7 @@ public class JInternal_RepuestosG1 extends javax.swing.JInternalFrame {
     
     private void getCategorias(){
         ArrayList<Categoria> Categorias = Cdao.getCategorias();
+        cbCategoria.addItem("Seleccionar");
         for(Categoria categ : Categorias ){
             cbCategoria.addItem(categ.getCategoria());
         }
@@ -190,11 +192,7 @@ public class JInternal_RepuestosG1 extends javax.swing.JInternalFrame {
             }
         });
 
-        cbMarca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---" }));
-
-        cbCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---" }));
-
-        cbUnidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---", "PCS", "L", "ML", "MM", "SETS", "M", "CM", "IN", "UNI" }));
+        cbUnidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PCS", "UNID", "PAR", "SET", "JGO", "KIT", " " }));
 
         cbGarantia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SIN GARANTIA", "3 MESES", "4 MESES", "1 AÑO", "2 AÑOS", "3 AÑOS", " " }));
 

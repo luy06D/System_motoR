@@ -29,8 +29,8 @@ public class RepuestoDAO implements Repuesto_Interface{
             String querInsert = "{CALL spu_repuestos_create(?,?,?,?,?,?,?,?)}";
             connec = conexion.getConexion();
             cs = connec.prepareCall(querInsert);
-            cs.setInt(1, rep.getIdmarca());
-            cs.setInt(2, rep.getIdcategoria());
+              cs.setInt(1, rep.getIdcategoria());
+            cs.setInt(2, rep.getIdmarca());
             cs.setString(3, rep.getNombreR());
             cs.setString(4, rep.getModelo());
             cs.setDouble(5, rep.getPrecio());
@@ -55,8 +55,8 @@ public class RepuestoDAO implements Repuesto_Interface{
             connec = conexion.getConexion();
             cs = connec.prepareCall(querInsert);
             cs.setInt(1, rep.getIdrepuesto());
-            cs.setInt(2, rep.getIdmarca());
-            cs.setInt(3, rep.getIdcategoria());
+            cs.setInt(2, rep.getIdcategoria());
+            cs.setInt(3, rep.getIdmarca());
             cs.setString(4, rep.getNombreR());
             cs.setString(5, rep.getModelo());
             cs.setDouble(6, rep.getPrecio());

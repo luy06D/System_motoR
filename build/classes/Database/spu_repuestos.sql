@@ -33,7 +33,6 @@ BEGIN
 END // 
 DELIMITER ;
 
-
 -- ACTUALIZAR REPUESTOS -- 
 DELIMITER // 
 CREATE PROCEDURE spu_repuestos_update(

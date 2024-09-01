@@ -68,7 +68,9 @@ CREATE TABLE REPUESTOS (
 	CONSTRAINT fk_idm_rep FOREIGN KEY (idmarca) REFERENCES MARCAS (idmarca),
     CONSTRAINT ck_pre_rep CHECK(precio > 0)
 );
-  
+
+
+
 
 CREATE TABLE VENTAS (
 	idventa		INT AUTO_INCREMENT PRIMARY KEY,

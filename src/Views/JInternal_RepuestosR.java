@@ -172,7 +172,7 @@ public class JInternal_RepuestosR extends javax.swing.JInternalFrame {
 
         jLabel6.setText("CATEGORIA:");
 
-        cbUni.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PCS", "L", "ML", "MM", "SETS", "M", "CM", "IN", "UNI" }));
+        cbUni.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PCS", "UNID", "PAR", "SET", "JGO", "KIT", " " }));
 
         jLabel8.setText("UNIDAD_MED:");
 
@@ -359,6 +359,8 @@ public class JInternal_RepuestosR extends javax.swing.JInternalFrame {
       String marca = cbMarca.getSelectedItem().toString();
       int idmarca = Mdao.listarOne(marca);
       rep.setIdmarca(idmarca);
+        System.out.println(marca);
+        System.out.println(idmarca);
       
       String categoria = cbCategoria.getSelectedItem().toString();
       int idCategoria = Cdao.listarOne(categoria);
