@@ -112,6 +112,39 @@ public class RepuestoDAO implements Repuesto_Interface{
         
     }
 
+    @Override
+    public ArrayList<HashMap<String, Object>> listRepuestosCate(int idcategoria) {
+          try{
+            String querySelect = "{CALL spu_filtroCate_Repuestos(?)}";
+            connec = conexion.getConexion();
+            cs = connec.prepareCall(querySelect);
+            cs.setInt(1, idcategoria);
+            rs = cs.executeQuery();
+            while(rs.next()){
+                HashMap<String, Object> map = new HashMap<>();
+                map.put("nombreR", rs.getString("nombreR"));
+                map.put("marca", rs.getString("marca"));
+                map.put("modelo", rs.getString("modelo"));
+                map.put("categoria", rs.getString("categoria"));
+                map.put("precio", rs.getDouble("precio"));
+                map.put("stock", rs.getInt("stock"));
+                map.put("unidad_med", rs.getString("unidad_med"));
+                map.put("garantia", rs.getString("garantia"));
+                map.put("estado", rs.getString("estado"));
+                map.put("create_at", rs.getString("create_at"));
+                vectorRep.add(map);
+                
+            }
+                      
+        }catch(Exception ex){
+            Logger.getLogger(RepuestoDAO.class.getName()).log(Level.SEVERE, null , ex);  
+        }
+        
+        return vectorRep;
+    }
+    
+    
+
    
     
     

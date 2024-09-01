@@ -61,8 +61,19 @@ BEGIN
 END //
 DELIMITER ;
 
+DELIMITER // 
+CREATE PROCEDURE spu_filtroCate_Repuestos(IN _idcategoria INT)
+BEGIN 
 
+	SELECT nombreR, MA.marca, modelo, CA.categoria,
+		precio, stock, unidad_med, garantia, RE.estado, create_at
+    FROM REPUESTOS RE
+    INNER JOIN MARCAS MA ON RE.idmarca = MA.idmarca
+    INNER JOIN CATEGORIAS CA ON RE.idcategoria = CA.idcategoria
+    WHERE RE.idcategoria = _idcategoria;
+		
+END // 
+DELIMITER ;
 
-
-
+CALL spu_filtroCate_Repuestos(2);
 
