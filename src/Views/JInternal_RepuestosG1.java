@@ -85,6 +85,8 @@ public class JInternal_RepuestosG1 extends javax.swing.JInternalFrame {
             };
             tableRepuesto.addRow(dataRepues);
         }
+        
+        listaRepuestos.clear();
    
     }
 
@@ -431,7 +433,7 @@ public class JInternal_RepuestosG1 extends javax.swing.JInternalFrame {
         Rdao.updateRepuesto(rep);
         JOptionPane.showMessageDialog(this, "Editado correctamente" , "Repuesto", JOptionPane.INFORMATION_MESSAGE);
         resetForm();
-
+        listarRepuestos();
         
     }//GEN-LAST:event_btnEditarActionPerformed
 
