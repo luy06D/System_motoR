@@ -10,6 +10,7 @@ public interface Repuesto_Interface {
     public boolean deleteRepuesto(int idrepuesto);
     public ArrayList<HashMap<String, Object>> listRepuestos();
     public ArrayList<HashMap<String, Object>> listRepuestosCate(int idcategoria);
+    public ArrayList<HashMap<String, Object>> listRepuestosMar(int idmarca);
     
     
 }

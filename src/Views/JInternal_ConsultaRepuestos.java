@@ -2,8 +2,10 @@
 package Views;
 
 import ModelDAO.CategoriaDAO;
+import ModelDAO.MarcaDAO;
 import ModelDAO.RepuestoDAO;
 import Models.Categoria;
+import Models.Marca;
 import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.table.DefaultTableModel;
@@ -13,17 +15,20 @@ public class JInternal_ConsultaRepuestos extends javax.swing.JInternalFrame {
 
     
     ArrayList<Categoria> vc = new ArrayList<>();
+    ArrayList<Marca> vm = new ArrayList<>();
     CategoriaDAO Cdao = new CategoriaDAO();
+    MarcaDAO Mdao = new MarcaDAO();
     RepuestoDAO Rdao = new RepuestoDAO();
     Categoria c;
   
     public JInternal_ConsultaRepuestos() {
         initComponents();
         getCategorias();
+        getMarcas();
     }
     
     
-      private void getCategorias(){
+    private void getCategorias(){
        vc = Cdao.getCategorias();
        cbCategoria.addItem("Seleccionar");
        for(int i=0; i<vc.size(); i++){
@@ -31,6 +36,78 @@ public class JInternal_ConsultaRepuestos extends javax.swing.JInternalFrame {
        }
         
     }
+    
+        
+    private void getMarcas(){
+       vm = Mdao.getMarcas();
+       cbMarca.addItem("Seleccionar");
+       for(int i=0; i<vm.size(); i++){
+           cbMarca.addItem(vm.get(i).getMarca());
+       }
+        
+    }
+    
+    private void filtrarRep_Categoria(){
+        DefaultTableModel tableRepuesto = (DefaultTableModel) tbRepuestos.getModel();
+        tableRepuesto.setRowCount(0);  // Limpiar la tabla
+        
+        String categoria = cbCategoria.getSelectedItem().toString();
+        int idcategoria = Cdao.listarOne(categoria);
+
+        ArrayList<HashMap<String, Object>> listaRepuestos = Rdao.listRepuestosCate(idcategoria);
+        
+        for(HashMap<String, Object> rep : listaRepuestos){
+            Object[] dataRepues = {
+                rep.get("nombreR"),
+                rep.get("marca"),
+                rep.get("modelo"),
+                rep.get("categoria"),
+                rep.get("precio"),
+                rep.get("stock"),
+                rep.get("unidad_med"),
+                rep.get("garantia"),
+                rep.get("estado"),
+                rep.get("create_at")
+            };
+            tableRepuesto.addRow(dataRepues);
+            
+        }
+        
+        listaRepuestos.clear();
+        
+    }
+    
+     private void filtrarRep_Marca(){
+        DefaultTableModel tableRepuesto = (DefaultTableModel) tbRepuestos.getModel();
+        tableRepuesto.setRowCount(0);  // Limpiar la tabla
+        
+        String marca = cbMarca.getSelectedItem().toString();
+        int idmarca = Mdao.listarOne(marca);
+
+        ArrayList<HashMap<String, Object>> listaRepuestos = Rdao.listRepuestosMar(idmarca);
+        
+        for(HashMap<String, Object> rep : listaRepuestos){
+            Object[] dataRepues = {
+                rep.get("nombreR"),
+                rep.get("marca"),
+                rep.get("modelo"),
+                rep.get("categoria"),
+                rep.get("precio"),
+                rep.get("stock"),
+                rep.get("unidad_med"),
+                rep.get("garantia"),
+                rep.get("estado"),
+                rep.get("create_at")
+            };
+            tableRepuesto.addRow(dataRepues);
+            
+        }
+        
+        listaRepuestos.clear();
+        
+    }
+      
+      
 
  
     @SuppressWarnings("unchecked")
@@ -44,7 +121,8 @@ public class JInternal_ConsultaRepuestos extends javax.swing.JInternalFrame {
         btnFiltrar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         cbCategoria = new javax.swing.JComboBox<>();
-        btnLimpiar = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        cbMarca = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbRepuestos = new javax.swing.JTable();
 
@@ -86,37 +164,40 @@ public class JInternal_ConsultaRepuestos extends javax.swing.JInternalFrame {
 
         jLabel1.setText("CATEGORIAS:");
 
-        btnLimpiar.setText("Limpiar");
-        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLimpiarActionPerformed(evt);
-            }
-        });
+        jLabel2.setText("MARCA:");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(cbCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 707, Short.MAX_VALUE)
-                .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
-                .addComponent(btnFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(65, 65, 65))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(cbCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(99, 99, 99)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(cbMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 707, Short.MAX_VALUE)
+                        .addComponent(btnFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(65, 65, 65))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(37, 37, 37)
+                .addGap(15, 15, 15)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
                     .addComponent(cbCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(42, Short.MAX_VALUE))
         );
 
@@ -183,44 +264,36 @@ public class JInternal_ConsultaRepuestos extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltrarActionPerformed
-        DefaultTableModel tableRepuesto = (DefaultTableModel) tbRepuestos.getModel();
-  
         String categoria = cbCategoria.getSelectedItem().toString();
         int idcategoria = Cdao.listarOne(categoria);
-
-        ArrayList<HashMap<String, Object>> listaRepuestos = Rdao.listRepuestosCate(idcategoria);
         
-        for(HashMap<String, Object> rep : listaRepuestos){
-            Object[] dataRepues = {
-                rep.get("nombreR"),
-                rep.get("marca"),
-                rep.get("modelo"),
-                rep.get("categoria"),
-                rep.get("precio"),
-                rep.get("stock"),
-                rep.get("unidad_med"),
-                rep.get("garantia"),
-                rep.get("estado"),
-                rep.get("create_at")
-            };
-            tableRepuesto.addRow(dataRepues);
-            
+        String marca = cbMarca.getSelectedItem().toString();
+        int idmarca = Mdao.listarOne(marca);
+        
+        if(idcategoria > 0){
+            filtrarRep_Categoria();
+            return;
         }
+        
+        if(idmarca > 0){
+            filtrarRep_Marca();
+            return;
+        }
+                
+                
+        
+        
         
            
     }//GEN-LAST:event_btnFiltrarActionPerformed
 
-    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
-       DefaultTableModel tableRepuesto = (DefaultTableModel) tbRepuestos.getModel();
-        tableRepuesto.setRowCount(0);  // Limpiar la tabla
-    }//GEN-LAST:event_btnLimpiarActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFiltrar;
-    private javax.swing.JButton btnLimpiar;
     private javax.swing.JComboBox<String> cbCategoria;
+    private javax.swing.JComboBox<String> cbMarca;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
