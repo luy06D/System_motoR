@@ -48,7 +48,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="itemConsultaRepu">
               <Properties>
-                <Property name="text" type="java.lang.String" value="CONSULTA REPUESTOS"/>
+                <Property name="text" type="java.lang.String" value="REPORTE REPUESTOS"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemConsultaRepuActionPerformed"/>
@@ -98,6 +98,16 @@
               <Font name="Tahoma" size="14" style="1"/>
             </Property>
           </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="itemComprasR">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="REGISTRO COMPRAS"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemComprasRActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu7">
           <Properties>

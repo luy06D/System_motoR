@@ -77,7 +77,21 @@ public class RepuestoDAO implements Repuesto_Interface{
 
     @Override
     public boolean deleteRepuesto(int idrepuesto) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        try{
+            
+            String queryDelete = "CALL spu_repuesto_delete(?) ";
+            connec = conexion.getConexion();
+            cs = connec.prepareCall(queryDelete);
+            cs.setInt(1, idrepuesto);
+            
+            cs.executeUpdate();
+            connec.close();
+            
+        }catch(Exception ex){
+          Logger.getLogger(RepuestoDAO.class.getName()).log(Level.SEVERE, null , ex);      
+        }
+        
+        return false;
     }
 
     @Override

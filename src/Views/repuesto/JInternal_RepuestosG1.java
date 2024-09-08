@@ -157,7 +157,7 @@ public class JInternal_RepuestosG1 extends javax.swing.JInternalFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        btnEliminar = new javax.swing.JButton();
+        btnDeshabilitar = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         txtproductoB = new javax.swing.JTextField();
@@ -346,7 +346,12 @@ public class JInternal_RepuestosG1 extends javax.swing.JInternalFrame {
 
         jPanel4.setBackground(new java.awt.Color(204, 204, 255));
 
-        btnEliminar.setText("ELIMINAR");
+        btnDeshabilitar.setText("DESHABILITAR");
+        btnDeshabilitar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeshabilitarActionPerformed(evt);
+            }
+        });
 
         btnEditar.setText("EDITAR");
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
@@ -363,7 +368,7 @@ public class JInternal_RepuestosG1 extends javax.swing.JInternalFrame {
                 .addGap(986, 986, 986)
                 .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnDeshabilitar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -371,7 +376,7 @@ public class JInternal_RepuestosG1 extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap(16, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDeshabilitar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20))
         );
@@ -465,10 +470,17 @@ public class JInternal_RepuestosG1 extends javax.swing.JInternalFrame {
         } 
     }//GEN-LAST:event_txtNombreKeyTyped
 
+    private void btnDeshabilitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeshabilitarActionPerformed
+        Rdao.deleteRepuesto(Integer.parseInt(txtIdRepuesto.getText()));
+        resetForm();
+        listarRepuestos();
+        JOptionPane.showMessageDialog(this, "Repuesto deshabilitado");
+    }//GEN-LAST:event_btnDeshabilitarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnDeshabilitar;
     private javax.swing.JButton btnEditar;
-    private javax.swing.JButton btnEliminar;
     private javax.swing.JComboBox<String> cbCategoria;
     private javax.swing.JComboBox<String> cbGarantia;
     private javax.swing.JComboBox<String> cbMarca;

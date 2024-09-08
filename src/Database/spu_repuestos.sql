@@ -8,7 +8,8 @@ BEGIN
 		precio, stock, unidad_med, garantia, RE.estado, create_at
     FROM REPUESTOS RE
     INNER JOIN MARCAS MA ON RE.idmarca = MA.idmarca
-    INNER JOIN CATEGORIAS CA ON RE.idcategoria = CA.idcategoria;
+    INNER JOIN CATEGORIAS CA ON RE.idcategoria = CA.idcategoria
+    WHERE RE.inactive_at = 1;
 END //
 DELIMITER ;
 
@@ -61,6 +62,20 @@ BEGIN
 END //
 DELIMITER ;
 
+-- CAMBIAR ESTADO DEL REPUESTO --
+DELIMITER //
+CREATE PROCEDURE spu_repuesto_delete(IN _idrepuesto INT)
+BEGIN 
+	UPDATE REPUESTOS
+    SET inactive_at = 0
+    WHERE idrepuesto = _idrepuesto;
+END //
+DELIMITER ;
+
+CALL spu_repuesto_delete(1);
+
+
+-- FILTRO DE REPUESTOS POR CATEGORIA
 DELIMITER // 
 CREATE PROCEDURE spu_filtroCate_Repuestos(IN _idcategoria INT)
 BEGIN 
@@ -76,6 +91,8 @@ END //
 DELIMITER ;
 
 CALL spu_filtroCate_Repuestos(2);
+
+-- FILTRO DE REPUESTOS POR MARCAS
 
 DELIMITER // 
 CREATE PROCEDURE spu_filtroMar_Repuestos(IN _idmarca INT)
