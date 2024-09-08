@@ -1,6 +1,14 @@
 
 package Views;
 
+import Views.cliente.JInternal_ClientesR;
+import Views.cliente.JInternal_ClientesG;
+import Views.usuario.JInternal_UsuariosR;
+import Views.usuario.JInternal_UsuariosG;
+import Views.repuestos.JInternal_Marcas_Categ;
+import Views.repuestos.JInternal_RepuestosR;
+import Views.repuestos.JInternal_RepuestosG1;
+import Views.repuestos.JInternal_ConsultaRepuestos;
 import javax.swing.JInternalFrame;
 
 public class Jframe_Inicio extends javax.swing.JFrame {
@@ -234,7 +242,9 @@ public class Jframe_Inicio extends javax.swing.JFrame {
 
     private void itemMar_CatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemMar_CatActionPerformed
         JInternal_Marcas_Categ JImar = new JInternal_Marcas_Categ();
-        openInternalFrame(JImar);
+        destok_inicio.add(JImar);
+        JImar.setVisible(true);
+        
     }//GEN-LAST:event_itemMar_CatActionPerformed
 
     private void JGestionarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JGestionarCActionPerformed
