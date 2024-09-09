@@ -3,7 +3,7 @@ package Views;
 
 import Views.cliente.JInternal_ClientesR;
 import Views.cliente.JInternal_ClientesG;
-import Views.compra.JInternal_comprasR;
+import Views.compra.JInternal_ordenCompra;
 import Views.usuario.JInternal_UsuariosR;
 import Views.usuario.JInternal_UsuariosG;
 import Views.repuestos.JInternal_Marcas_Categ;
@@ -38,7 +38,9 @@ public class Jframe_Inicio extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         Item_registro = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
-        itemComprasR = new javax.swing.JMenuItem();
+        itemOrdenC = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
         Item_clientesR = new javax.swing.JMenuItem();
@@ -143,13 +145,19 @@ public class Jframe_Inicio extends javax.swing.JFrame {
         jMenu6.setText("COMPRAS     ");
         jMenu6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
-        itemComprasR.setText("REGISTRO COMPRAS");
-        itemComprasR.addActionListener(new java.awt.event.ActionListener() {
+        itemOrdenC.setText("NUEVA OC");
+        itemOrdenC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itemComprasRActionPerformed(evt);
+                itemOrdenCActionPerformed(evt);
             }
         });
-        jMenu6.add(itemComprasR);
+        jMenu6.add(itemOrdenC);
+
+        jMenuItem1.setText("REGISTRO COMPRA ");
+        jMenu6.add(jMenuItem1);
+
+        jMenuItem2.setText("REPORTE COMPRAS");
+        jMenu6.add(jMenuItem2);
 
         jMenuBar1.add(jMenu6);
 
@@ -288,10 +296,10 @@ public class Jframe_Inicio extends javax.swing.JFrame {
         openInternalFrame(JIQueryR);
     }//GEN-LAST:event_itemConsultaRepuActionPerformed
 
-    private void itemComprasRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemComprasRActionPerformed
-        JInternal_comprasR JIcompraR = new  JInternal_comprasR();
+    private void itemOrdenCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemOrdenCActionPerformed
+        JInternal_ordenCompra JIcompraR = new  JInternal_ordenCompra();
         openInternalFrame(JIcompraR);
-    }//GEN-LAST:event_itemComprasRActionPerformed
+    }//GEN-LAST:event_itemOrdenCActionPerformed
 
     
     
@@ -344,9 +352,9 @@ public class Jframe_Inicio extends javax.swing.JFrame {
     private javax.swing.JMenuItem JGestionarC;
     private javax.swing.JDesktopPane destok_inicio;
     private javax.swing.JMenuItem itemCerrarSesion;
-    private javax.swing.JMenuItem itemComprasR;
     private javax.swing.JMenuItem itemConsultaRepu;
     private javax.swing.JMenuItem itemMar_Cat;
+    private javax.swing.JMenuItem itemOrdenC;
     private javax.swing.JMenuItem itemProductoG;
     private javax.swing.JMenuItem itemProductosR;
     private javax.swing.JLabel jLabel1;
@@ -358,6 +366,8 @@ public class Jframe_Inicio extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenu jMenu8;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

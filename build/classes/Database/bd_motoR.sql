@@ -64,12 +64,12 @@ CREATE TABLE REPUESTOS (
     descripcion	VARCHAR(100) NULL,
     estado 		VARCHAR(20) NOT NULL DEFAULT 'AGOTADO',
     create_at	DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    inactive_at BIT NOT NULL DEFAULT 1,
     CONSTRAINT fk_idc_rep FOREIGN KEY (idcategoria) REFERENCES CATEGORIAS (idcategoria),
 	CONSTRAINT fk_idm_rep FOREIGN KEY (idmarca) REFERENCES MARCAS (idmarca),
     CONSTRAINT ck_pre_rep CHECK(precio > 0)
 );
 
-ALTER TABLE REPUESTOS ADD COLUMN inactive_at BIT NOT NULL DEFAULT 1;
 
 CREATE TABLE VENTAS (
 	idventa		INT AUTO_INCREMENT PRIMARY KEY,
@@ -109,28 +109,34 @@ CREATE TABLE PROVEEDORES(
     razon_social	VARCHAR(40) NOT NULL,
     direccion		VARCHAR(50) NULL,
     telefono 		CHAR(9) NOT NULL,
-    CONSTRAINT uk_raz_pro UNIQUE(razon_social)
+    email			VARCHAR(100) NULL,
+    CONSTRAINT uk_raz_pro UNIQUE(razon_social),
+    CONSTRAINT uk_ema_pro UNIQUE(email)
 );
 
-CREATE TABLE COMPRAS (
-	idcompra 		INT AUTO_INCREMENT PRIMARY KEY,
-    idprovedor		INT NOT NULL,
-    num_factura		VARCHAR(50) NOT NULL,
-    comprobante		VARCHAR(40) NOT NULL,
-    create_at		DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+CREATE TABLE ORDEN_COMPRAS (
+	idordencompra		INT AUTO_INCREMENT PRIMARY KEY,
+    idprovedor			INT 		NOT NULL,
+    num_ordenC			SMALLINT  	NOT NULL,
+    total_costos		VARCHAR(40) NOT NULL,
+    estado 				VARCHAR(10) 	NOT NULL DEFAULT 'PENDIENTE',  -- PENDIENTE , RECIBIDO 
+    create_at			DATETIME 		NOT NULL DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT fk_idp_com FOREIGN KEY (idprovedor) REFERENCES PROVEEDORES (idprovedor)
 );
 
-CREATE TABLE DETALLE_COMPRAS(
-	iddetalle_compra	INT AUTO_INCREMENT PRIMARY KEY,
-    idrepuesto			INT NOT NULL,
-    idcompra			INT NOT NULL,
-    cantidad			SMALLINT NOT NULL,
-    precio_compra		DECIMAL(6,2) NOT NULL,
+CREATE TABLE DETALLE_ORDENC(
+	iddetalle_orden			INT AUTO_INCREMENT PRIMARY KEY,
+    idrepuesto				INT NOT NULL,
+    idordencompra			INT NOT NULL,
+    cantidad				SMALLINT NOT NULL,
+    precio_unitario			DECIMAL(6,2) NOT NULL,
+    subtotal				DECIMAL(6,2) NOT NULL,
     CONSTRAINT fk_idr_detc FOREIGN KEY (idrepuesto) REFERENCES REPUESTOS (idrepuesto),
-    CONSTRAINT fk_idc_detc FOREIGN KEY (idcompra) REFERENCES COMPRAS (idcompra),
+    CONSTRAINT fk_idc_detc FOREIGN KEY (idordencompra) REFERENCES ORDEN_COMPRAS (idordencompra),
     CONSTRAINT ck_can_detc CHECK (cantidad > 0) 
 );
+
+
 
 
 

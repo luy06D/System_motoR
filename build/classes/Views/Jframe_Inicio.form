@@ -99,13 +99,23 @@
             </Property>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="itemComprasR">
+            <MenuItem class="javax.swing.JMenuItem" name="itemOrdenC">
               <Properties>
-                <Property name="text" type="java.lang.String" value="REGISTRO COMPRAS"/>
+                <Property name="text" type="java.lang.String" value="NUEVA OC"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemComprasRActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemOrdenCActionPerformed"/>
               </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="REGISTRO COMPRA "/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="REPORTE COMPRAS"/>
+              </Properties>
             </MenuItem>
           </SubComponents>
         </Menu>
