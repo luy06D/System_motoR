@@ -136,7 +136,25 @@ CREATE TABLE DETALLE_ORDENC(
     CONSTRAINT ck_can_detc CHECK (cantidad > 0) 
 );
 
+CREATE TABLE RECEPTION_PRODUCTOS(
+	idreceptionP 	INT AUTO_INCREMENT PRIMARY KEY,
+    idordencompra 	INT NOT NULL,
+    guia_remision	VARCHAR(15) NOT NULL,
+	fecha_recepcion	DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	CONSTRAINT fk_ido_rec FOREIGN KEY (idordencompra) REFERENCES ORDEN_COMPRAS (idordencompra)	
+);
 
+CREATE TABLE KARDEK(
+	idkardex		INT AUTO_INCREMENT PRIMARY KEY,
+    idordencompra 	INT NULL,
+    idventa			INT NULL,
+    transaccion		VARCHAR(20) NOT NULL, -- SALIDA , ENTRADA
+    fecha_transac	DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    descripcion		VARCHAR(100) NULL,
+    CONSTRAINT fk_ido_kar FOREIGN KEY (idordencompra) REFERENCES ORDEN_COMPRAS (idordencompra),
+    CONSTRAINT fk_idv_kar FOREIGN KEY (idventa) REFERENCES VENTAS (idventa)
+
+);
 
 
 
