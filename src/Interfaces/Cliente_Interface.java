@@ -1,6 +1,5 @@
 
 package Interfaces;
-import Models.Cliente;
 import Models.Persona;
 import java.util.ArrayList;
 import java.util.HashMap;

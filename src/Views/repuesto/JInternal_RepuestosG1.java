@@ -1,5 +1,5 @@
 
-package Views.repuestos;
+package Views.repuesto;
 
 import ModelDAO.CategoriaDAO;
 import ModelDAO.MarcaDAO;

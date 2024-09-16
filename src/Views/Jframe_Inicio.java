@@ -6,10 +6,10 @@ import Views.cliente.JInternal_ClientesG;
 import Views.compra.JInternal_ordenCompra;
 import Views.usuario.JInternal_UsuariosR;
 import Views.usuario.JInternal_UsuariosG;
-import Views.repuestos.JInternal_Marcas_Categ;
-import Views.repuestos.JInternal_RepuestosR;
-import Views.repuestos.JInternal_RepuestosG1;
-import Views.repuestos.JInternal_ConsultaRepuestos;
+import Views.repuesto.JInternal_Marcas_Categ;
+import Views.repuesto.JInternal_RepuestosR;
+import Views.repuesto.JInternal_RepuestosG1;
+import Views.repuesto.JInternal_ConsultaRepuestos;
 import javax.swing.JInternalFrame;
 
 public class Jframe_Inicio extends javax.swing.JFrame {
@@ -64,17 +64,17 @@ public class Jframe_Inicio extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(486, 486, 486)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(660, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(515, Short.MAX_VALUE))
+                .addGap(341, 341, 341))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(412, Short.MAX_VALUE)
+                .addContainerGap(334, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25))
+                .addGap(103, 103, 103))
         );
 
         destok_inicio.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -145,7 +145,7 @@ public class Jframe_Inicio extends javax.swing.JFrame {
         jMenu6.setText("COMPRAS     ");
         jMenu6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
-        itemOrdenC.setText("NUEVA OC");
+        itemOrdenC.setText("NUEVA ORDEN ");
         itemOrdenC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 itemOrdenCActionPerformed(evt);
