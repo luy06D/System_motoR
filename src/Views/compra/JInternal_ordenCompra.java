@@ -3,6 +3,8 @@ package Views.compra;
 
 import javax.swing.table.DefaultTableModel;
 import ModelDAO.CompraDAO;
+import ModelDAO.ProveedorDAO;
+import Models.Proveedor;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -12,9 +14,13 @@ import java.util.HashMap;
 public class JInternal_ordenCompra extends javax.swing.JInternalFrame {
     
     CompraDAO Cdao = new CompraDAO();
+    ProveedorDAO Pdao = new ProveedorDAO();
+    
+    ArrayList<Proveedor> pv = new ArrayList<>();
 
     public JInternal_ordenCompra() {
         initComponents();
+        getProvedores();
         
         
         tbRepuestoOC.addMouseListener(new MouseAdapter(){
@@ -29,6 +35,15 @@ public class JInternal_ordenCompra extends javax.swing.JInternalFrame {
                 }
             }        
         });
+    }
+    
+    private void getProvedores(){
+        pv = Pdao.getProvedor();
+        cbProvedores.addItem("Seleccion");
+        for(int i=0; i<pv.size(); i++){
+            cbProvedores.addItem(pv.get(i).getRazon_social());
+        }
+        
     }
     
     
@@ -65,11 +80,11 @@ public class JInternal_ordenCompra extends javax.swing.JInternalFrame {
         jLabel9 = new javax.swing.JLabel();
         panelRound1 = new Clases.PanelRound();
         jLabel6 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cbProvedores = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        txtOrden = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jdFecha = new com.toedter.calendar.JDateChooser();
         jLabel1 = new javax.swing.JLabel();
         panelRound2 = new Clases.PanelRound();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -125,7 +140,7 @@ public class JInternal_ordenCompra extends javax.swing.JInternalFrame {
 
         jLabel6.setText("PROVEEDOR:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbProvedores.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
 
         jLabel7.setText("N° ORDEN(OC): ");
 
@@ -142,14 +157,14 @@ public class JInternal_ordenCompra extends javax.swing.JInternalFrame {
                     .addComponent(jLabel6))
                 .addGap(18, 18, 18)
                 .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbProvedores, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound1Layout.createSequentialGroup()
-                .addContainerGap(31, Short.MAX_VALUE)
+                .addContainerGap(36, Short.MAX_VALUE)
                 .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jdFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(133, 133, 133))
         );
         panelRound1Layout.setVerticalGroup(
@@ -158,15 +173,15 @@ public class JInternal_ordenCompra extends javax.swing.JInternalFrame {
                 .addGap(15, 15, 15)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jdFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbProvedores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtOrden, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -313,8 +328,8 @@ public class JInternal_ordenCompra extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(panelRound1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(panelRound1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(panelRound2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -388,9 +403,8 @@ public class JInternal_ordenCompra extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JButton btnSearch;
+    private javax.swing.JComboBox<String> cbProvedores;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -407,11 +421,12 @@ public class JInternal_ordenCompra extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable2;
     private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private com.toedter.calendar.JDateChooser jdFecha;
     private Clases.PanelRound panelRound1;
     private Clases.PanelRound panelRound2;
     private javax.swing.JTable tbRepuestoOC;
     private javax.swing.JTextField txtIdRepuesto;
+    private javax.swing.JTextField txtOrden;
     private javax.swing.JTextField txtRepuesto;
     private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
