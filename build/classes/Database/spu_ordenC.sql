@@ -13,3 +13,15 @@ END //
 DELIMITER ;
 
 CALL spu_product_buscar('KENDA');
+
+DELIMITER //
+CREATE PROCEDURE spu_getProduct(IN _idrepuesto INT)
+BEGIN 
+	SELECT idrepuesto, nombreR, MA.marca, modelo, CA.categoria, unidad_med
+    FROM REPUESTOS RE
+    INNER JOIN MARCAS MA ON RE.idmarca = MA.idmarca
+    INNER JOIN CATEGORIAS CA ON RE.idcategoria = CA.idcategoria
+    WHERE idrepuesto = _idrepuesto;
+
+END // 
+DELIMITER ;

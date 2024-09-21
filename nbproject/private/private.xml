@@ -5,8 +5,8 @@
         <group>
             <file>file:/C:/Users/LUIS/Documents/NetBeansProjects/System_repuestos/src/Views/repuesto/JInternal_RepuestosG1.java</file>
             <file>file:/C:/Users/LUIS/Documents/NetBeansProjects/System_repuestos/src/Views/compra/JInternal_ordenCompra.java</file>
+            <file>file:/C:/Users/LUIS/Documents/NetBeansProjects/System_repuestos/src/ModelDAO/ProveedorDAO.java</file>
             <file>file:/C:/Users/LUIS/Documents/NetBeansProjects/System_repuestos/src/Views/repuesto/JInternal_ConsultaRepuestos.java</file>
-            <file>file:/C:/Users/LUIS/Documents/NetBeansProjects/System_repuestos/src/ModelDAO/CompraDAO.java</file>
             <file>file:/C:/Users/LUIS/Documents/NetBeansProjects/System_repuestos/src/Interfaces/Cliente_Interface.java</file>
         </group>
     </open-files>
