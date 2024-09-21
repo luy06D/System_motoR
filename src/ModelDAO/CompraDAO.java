@@ -44,5 +44,34 @@ public class CompraDAO implements Compra_Interface {
         
         return vectorRep;
     }
+
+    @Override
+    public ArrayList<HashMap<String, Object>> listRepuesto(int idrepuesto) {
+         try{
+            String querySearch = "{CALL spu_getRepuesto(?)}";
+            connec = conexion.getConexion();
+            cs = connec.prepareCall(querySearch);
+            cs.setInt(1, idrepuesto);
+            rs = cs.executeQuery();
+            while(rs.next()){
+                HashMap<String, Object> map = new HashMap<>();
+                map.put("idrepuesto", rs.getInt("idrepuesto"));
+                map.put("nombreR", rs.getString("nombreR"));
+                map.put("marca", rs.getString("marca"));
+                map.put("modelo", rs.getString("modelo"));
+                map.put("categoria", rs.getString("categoria"));
+                map.put("unidad_med", rs.getString("unidad_med"));
+                vectorRep.add(map);
+            }
+            
+        }catch(Exception ex){
+             Logger.getLogger(CompraDAO.class.getName()).log(Level.SEVERE, null , ex);  
+        }
+        
+        return vectorRep;
+        
+    }
+    
+    
     
 }
