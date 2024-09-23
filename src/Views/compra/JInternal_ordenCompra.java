@@ -11,6 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import javax.swing.JOptionPane;
 
 
 public class JInternal_ordenCompra extends javax.swing.JInternalFrame {
@@ -66,9 +67,9 @@ public class JInternal_ordenCompra extends javax.swing.JInternalFrame {
         txtPrecio.setText(null);
         txtCantidad.setText(null);
         txtIdRepuesto.setText(null);
-        
-        
-       
+        txtSearch.setText(null);
+        DefaultTableModel tbRepuesto = (DefaultTableModel) tbRepuestoOC.getModel();
+        tbRepuesto.setRowCount(0);
     }
     
     
@@ -97,6 +98,8 @@ public class JInternal_ordenCompra extends javax.swing.JInternalFrame {
         
        
     }
+
+
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -127,6 +130,7 @@ public class JInternal_ordenCompra extends javax.swing.JInternalFrame {
         txtIdRepuesto = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         txtPrecio = new javax.swing.JTextField();
+        btnRemove = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tbRepuesto = new javax.swing.JTable();
@@ -265,6 +269,13 @@ public class JInternal_ordenCompra extends javax.swing.JInternalFrame {
 
         jLabel10.setText("PRECIO UNI:");
 
+        btnRemove.setText("QUITAR");
+        btnRemove.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRemoveActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelRound2Layout = new javax.swing.GroupLayout(panelRound2);
         panelRound2.setLayout(panelRound2Layout);
         panelRound2Layout.setHorizontalGroup(
@@ -276,13 +287,13 @@ public class JInternal_ordenCompra extends javax.swing.JInternalFrame {
                         .addGroup(panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelRound2Layout.createSequentialGroup()
                                 .addComponent(jLabel3)
-                                .addGap(1, 1, 1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(70, 70, 70)
+                                .addGap(59, 59, 59)
                                 .addComponent(btnSearch))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 876, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(panelRound2Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound2Layout.createSequentialGroup()
                         .addGroup(panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
                             .addComponent(txtRepuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -297,7 +308,9 @@ public class JInternal_ordenCompra extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(txtIdRepuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnRemove, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE))
                         .addGap(41, 41, 41))))
         );
         panelRound2Layout.setVerticalGroup(
@@ -327,7 +340,9 @@ public class JInternal_ordenCompra extends javax.swing.JInternalFrame {
                             .addComponent(txtRepuesto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnRemove, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jLabel2.setText("DETALLE DE REPUESTOS");
@@ -504,10 +519,37 @@ public class JInternal_ordenCompra extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_btnAgregarActionPerformed
 
+    private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveActionPerformed
+        
+        DefaultTableModel tbRe = (DefaultTableModel) tbRepuesto.getModel();
+               // Obtener el modelo de la tabla
+        DefaultTableModel model = (DefaultTableModel) tbRepuesto.getModel();
+
+        // Obtener el índice de la fila seleccionada
+        int filaSeleccionada = tbRepuesto.getSelectedRow();
+
+        // Verificar que se haya seleccionado una fila
+        if (filaSeleccionada >= 0) {
+            // Eliminar la fila del modelo
+            model.removeRow(filaSeleccionada);
+            double subTotal = 0.0;
+        
+            for(int i = 0; i < tbRe.getRowCount(); i++){
+                double suma = (double) tbRe.getValueAt(i, 8);
+                subTotal += suma;
+            }
+            txtSubtotal.setText(String.valueOf(subTotal));
+        } else {
+            // Mensaje en caso de que no haya fila seleccionada
+            JOptionPane.showMessageDialog(null, "Por favor, selecciona una fila para eliminar.");
+        }
+    }//GEN-LAST:event_btnRemoveActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnRegistrar;
+    private javax.swing.JButton btnRemove;
     private javax.swing.JButton btnSearch;
     private javax.swing.JComboBox<String> cbProvedores;
     private javax.swing.JLabel jLabel1;
