@@ -463,23 +463,25 @@ public class JInternal_ordenCompra extends javax.swing.JInternalFrame {
         tbRepuesto.setRowCount(0);
         
         String search = txtSearch.getText();
+        if(search.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Por favor, ingrese un parametro para realizar la busqueda");  
+        }else{
+             ArrayList<HashMap<String, Object>> listRepuesto = Cdao.listRep_oc(search);
         
-        ArrayList<HashMap<String, Object>> listRepuesto = Cdao.listRep_oc(search);
-        
-        for(HashMap<String, Object> rep : listRepuesto){
-            Object[] dataRepues = {
-                rep.get("idrepuesto"),
-                rep.get("nombreR"),
-                rep.get("marca"),
-                rep.get("modelo"),
-                rep.get("categoria"),
-                rep.get("unidad_med")
-            };
-            tbRepuesto.addRow(dataRepues);
-            
-        }
-        
-        listRepuesto.clear();
+            for(HashMap<String, Object> rep : listRepuesto){
+                Object[] dataRepues = {
+                    rep.get("idrepuesto"),
+                    rep.get("nombreR"),
+                    rep.get("marca"),
+                    rep.get("modelo"),
+                    rep.get("categoria"),
+                    rep.get("unidad_med")
+                };
+                tbRepuesto.addRow(dataRepues);
+
+            }
+              listRepuesto.clear();   
+        }       
     }//GEN-LAST:event_btnSearchActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
@@ -488,59 +490,58 @@ public class JInternal_ordenCompra extends javax.swing.JInternalFrame {
 
         String idrepuesto = txtIdRepuesto.getText();
         ArrayList<HashMap<String, Object>> listRepuesto = Cdao.listRepuesto(Integer.parseInt(idrepuesto));
-        
-        double precio = Double.parseDouble (txtPrecio.getText());
-        double cantidad = Integer.parseInt(txtCantidad.getText());
-        double total = cantidad * precio ;
 
-        for(HashMap<String, Object> rep : listRepuesto){
+        if(txtPrecio.getText().isEmpty() || txtCantidad.getText().isEmpty() || txtIdRepuesto.getText().isEmpty() ){
+           JOptionPane.showMessageDialog(null, "Por favor, complete todos los parametros");   
+           return;
+           
+        }else{
+            
+            double precio = Double.parseDouble (txtPrecio.getText());
+            double cantidad = Integer.parseInt(txtCantidad.getText());
+            double total = cantidad * precio ;
+               
+            for(HashMap<String, Object> rep : listRepuesto){
 
-            int id = (int) rep.get("idrepuesto");
-            String repuesto = (String) rep.get("nombreR");
-            String marca = (String) rep.get("marca");
-            String modelo = (String) rep.get("modelo");
-            String catego = (String)   rep.get("categoria");
-            String unidad = (String) rep.get("unidad_med");
-            
-            tbRe.addRow(new Object[] { id, repuesto, marca, modelo, catego, unidad, cantidad, precio, total });
-            
-            double subTotal = 0.0;
-        
-            for(int i = 0; i < tbRe.getRowCount(); i++){
-                double suma = (double) tbRe.getValueAt(i, 8);
-                subTotal += suma;
+                int id = (int) rep.get("idrepuesto");
+                String repuesto = (String) rep.get("nombreR");
+                String marca = (String) rep.get("marca");
+                String modelo = (String) rep.get("modelo");
+                String catego = (String)   rep.get("categoria");
+                String unidad = (String) rep.get("unidad_med");
+
+                tbRe.addRow(new Object[] { id, repuesto, marca, modelo, catego, unidad, cantidad, precio, total });
+
+                double subTotal = 0.0;
+
+                for(int i = 0; i < tbRe.getRowCount(); i++){
+                    double suma = (double) tbRe.getValueAt(i, 8);
+                    subTotal += suma;
+                }
+
+                txtSubtotal.setText(String.valueOf(subTotal));
             }
-
-            txtSubtotal.setText(String.valueOf(subTotal));
-        }
-
-        
         resetFormat();
-
+        }
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveActionPerformed
         
         DefaultTableModel tbRe = (DefaultTableModel) tbRepuesto.getModel();
-               // Obtener el modelo de la tabla
-        DefaultTableModel model = (DefaultTableModel) tbRepuesto.getModel();
 
-        // Obtener el índice de la fila seleccionada
         int filaSeleccionada = tbRepuesto.getSelectedRow();
 
-        // Verificar que se haya seleccionado una fila
         if (filaSeleccionada >= 0) {
-            // Eliminar la fila del modelo
-            model.removeRow(filaSeleccionada);
+            tbRe.removeRow(filaSeleccionada);
+            
             double subTotal = 0.0;
-        
             for(int i = 0; i < tbRe.getRowCount(); i++){
                 double suma = (double) tbRe.getValueAt(i, 8);
                 subTotal += suma;
             }
             txtSubtotal.setText(String.valueOf(subTotal));
         } else {
-            // Mensaje en caso de que no haya fila seleccionada
+            
             JOptionPane.showMessageDialog(null, "Por favor, selecciona una fila para eliminar.");
         }
     }//GEN-LAST:event_btnRemoveActionPerformed

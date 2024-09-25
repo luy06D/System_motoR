@@ -153,7 +153,7 @@ public class Jframe_Inicio extends javax.swing.JFrame {
         });
         jMenu6.add(itemOrdenC);
 
-        jMenuItem1.setText("REGISTRO COMPRA ");
+        jMenuItem1.setText("RECEPCION COMPRA");
         jMenu6.add(jMenuItem1);
 
         jMenuItem2.setText("REPORTE COMPRAS");

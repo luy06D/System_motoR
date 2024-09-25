@@ -148,12 +148,12 @@ CREATE TABLE RECEPTION_PRODUCTOS(
 
 CREATE TABLE KARDEX(
 	idkardex		INT AUTO_INCREMENT PRIMARY KEY,
-    idordencompra 	INT NULL,
+    idreceptionP 	INT NULL,
     idventa			INT NULL,
     transaccion		VARCHAR(20) NOT NULL, -- SALIDA , ENTRADA
     fecha_transac	DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     descripcion		VARCHAR(100) NULL,
-    CONSTRAINT fk_ido_kar FOREIGN KEY (idordencompra) REFERENCES ORDEN_COMPRAS (idordencompra),
+    CONSTRAINT fk_ido_kar FOREIGN KEY (idreceptionP) REFERENCES RECEPTION_PRODUCTOS (idreceptionP),
     CONSTRAINT fk_idv_kar FOREIGN KEY (idventa) REFERENCES VENTAS (idventa)
 
 );
