@@ -5,6 +5,7 @@ import javax.swing.table.DefaultTableModel;
 import ModelDAO.CompraDAO;
 import ModelDAO.ProveedorDAO;
 import Models.Proveedor;
+import Models.Orden_compras;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.text.SimpleDateFormat;
@@ -20,9 +21,6 @@ public class JInternal_ordenCompra extends javax.swing.JInternalFrame {
     ProveedorDAO Pdao = new ProveedorDAO();
     
     ArrayList<Proveedor> pv = new ArrayList<>();
-
-
-
 
     public JInternal_ordenCompra() {
         initComponents();
@@ -48,9 +46,9 @@ public class JInternal_ordenCompra extends javax.swing.JInternalFrame {
     
     private void getProvedores(){
         pv = Pdao.getProvedor();
-        cbProvedores.addItem("Seleccione");
+        cbProvedor.addItem("Seleccione");
         for(int i=0; i<pv.size(); i++){
-            cbProvedores.addItem(pv.get(i).getRazon_social());
+            cbProvedor.addItem(pv.get(i).getRazon_social());
         }
         
     }
@@ -110,7 +108,7 @@ public class JInternal_ordenCompra extends javax.swing.JInternalFrame {
         jLabel9 = new javax.swing.JLabel();
         panelRound1 = new Clases.PanelRound();
         jLabel6 = new javax.swing.JLabel();
-        cbProvedores = new javax.swing.JComboBox<>();
+        cbProvedor = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
         txtOrden = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
@@ -191,7 +189,7 @@ public class JInternal_ordenCompra extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbProvedores, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbProvedor, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound1Layout.createSequentialGroup()
                 .addContainerGap(36, Short.MAX_VALUE)
@@ -210,7 +208,7 @@ public class JInternal_ordenCompra extends javax.swing.JInternalFrame {
                 .addGap(27, 27, 27)
                 .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(cbProvedores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbProvedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
@@ -368,6 +366,11 @@ public class JInternal_ordenCompra extends javax.swing.JInternalFrame {
         jPanel4.setBackground(new java.awt.Color(204, 204, 255));
 
         btnRegistrar.setText("REGISTRAR");
+        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -546,13 +549,38 @@ public class JInternal_ordenCompra extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnRemoveActionPerformed
 
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+        Orden_compras oc = new Orden_compras();
+        
+        String provedor = cbProvedor.getSelectedItem().toString();
+        int idprovedor = Pdao.listarOne(provedor);
+        
+        oc.setIdprovedor(idprovedor);
+        oc.setNum_ordenC(txtOrden.getText());
+        oc.setTotal_costos(Double.parseDouble(txtSubtotal.getText()));
+        int idCompra = Cdao.insertOrdenCompra(oc);
+        
+        registrarDetalleOC(idCompra);
+           
+        
+    }//GEN-LAST:event_btnRegistrarActionPerformed
+
+    public void registrarDetalleOC(int idCompra){
+        
+    }
+    
+    
+    
+    
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JButton btnRemove;
     private javax.swing.JButton btnSearch;
-    private javax.swing.JComboBox<String> cbProvedores;
+    private javax.swing.JComboBox<String> cbProvedor;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

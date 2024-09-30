@@ -2,9 +2,12 @@
 package ModelDAO;
 import Connection.Conexion;
 import Interfaces.Compra_Interface;
+import Models.Detalle_orden;
+import Models.Orden_compras;
 import java.sql.Connection;
 import java.sql.CallableStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -70,6 +73,55 @@ public class CompraDAO implements Compra_Interface {
         
         return vectorRep;
         
+    }
+
+    @Override
+    public int insertOrdenCompra(Orden_compras orden) {
+        int idCompra = 0 ;
+        
+        try{
+            
+            String queryInsert = "{CALL spu_ordenC_register(?,?,?)}";
+            connec = conexion.getConexion();
+            cs = connec.prepareCall(queryInsert);
+            
+            cs.setInt(1, orden.getIdprovedor());
+            cs.setString(2, orden.getNum_ordenC());
+            cs.setDouble(3, orden.getTotal_costos());
+            
+            rs = cs.executeQuery();
+            
+            if(rs.next()){
+               idCompra = rs.getInt(1);  
+            }  
+            
+        }catch(Exception e){
+            Logger.getLogger(CompraDAO.class.getName()).log(Level.SEVERE, null , e);
+        }
+       return idCompra;
+    }
+    
+
+    @Override
+    public boolean insertDetalleOrden(Detalle_orden det) {
+       try{
+           String insertDetalleOc = "{CALL spu_detalleOrden_register(?,?,?,?,?)}";
+           connec = conexion.getConexion();
+           cs = connec.prepareCall(insertDetalleOc);
+           cs.setInt(1, det.getIdrepuesto());
+           cs.setInt(2, det.getIdordencompra());
+           cs.setInt(3, det.getCantidad());
+           cs.setDouble(4, det.getPrecio_unitario());
+           cs.setDouble(5, det.getSubtotal());
+           
+           cs.executeUpdate();
+           connec.close();
+           
+       }catch(Exception ex){
+           Logger.getLogger(CompraDAO.class.getName()).log(Level.SEVERE, null , ex); 
+       }
+       
+       return false;
     }
     
     

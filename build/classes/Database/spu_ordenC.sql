@@ -37,8 +37,14 @@ IN _num_ordenC  SMALLINT,
 IN total_costos VARCHAR(40)
 )
 BEGIN
+	DECLARE idOrden INT;
+
 	INSERT INTO ORDEN_COMPRAS (idproveedor, num_ordenC, total_costos) VALUES
 						(_idproveedor, _num_ordenC, _total_costos);
+	SET idOrden = LAST_INSERT_ID();
+    
+    SELECT idOrden;
+    
 END // 
 DELIMITER ;
 

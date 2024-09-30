@@ -44,5 +44,31 @@ public class ProveedorDAO implements Provedor_Interface{
         return vp;
 
     }
+
+    @Override
+    public int listarOne(String provedor) {
+        int idProvedor = -1;
+         try{
+            String querySelect = "SELECT * FROM PROVEEDORES WHERE razon_social=?";
+            connec = conexion.getConexion();
+            ps = connec.prepareStatement(querySelect);
+            ps.setString(1, provedor);
+            rs = ps.executeQuery();
+            if(rs.next()){
+                pro = new Proveedor();
+                idProvedor = rs.getInt("idprovedor");
+                    
+            }
+            
+            connec.close();
+            
+        }catch(Exception ex){
+            Logger.getLogger(MarcaDAO.class.getName()).log(Level.SEVERE, null , ex);   
+        }
+        
+        return idProvedor;
+    }
+    
+    
     
 }
