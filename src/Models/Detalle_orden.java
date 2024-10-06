@@ -7,7 +7,7 @@ public class Detalle_orden {
     private int idrepuesto;
     private int cantidad;
     private double precio_unitario;
-    private double subtotal;
+
 
     public int getIddetalle_orden() {
         return iddetalle_orden;
@@ -49,12 +49,5 @@ public class Detalle_orden {
         this.precio_unitario = precio_unitario;
     }
 
-    public double getSubtotal() {
-        return subtotal;
-    }
 
-    public void setSubtotal(double subtotal) {
-        this.subtotal = subtotal;
-    }
-    
 }

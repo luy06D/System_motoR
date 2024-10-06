@@ -32,15 +32,16 @@ CALL spu_getRepuesto(1);
 -- REGISTRAR ORDEN DE COMPRA 
 DELIMITER //
 CREATE PROCEDURE spu_ordenC_register(
-IN _idproveedor INT,
+IN _idprovedor INT,
 IN _num_ordenC  SMALLINT,
-IN total_costos VARCHAR(40)
+IN _total_costos VARCHAR(40),
+IN _subtotal DECIMAL(6,2)
 )
 BEGIN
 	DECLARE idOrden INT;
 
-	INSERT INTO ORDEN_COMPRAS (idproveedor, num_ordenC, total_costos) VALUES
-						(_idproveedor, _num_ordenC, _total_costos);
+	INSERT INTO ORDEN_COMPRAS (idprovedor, num_ordenC, total_costos, subtotal) VALUES
+						(_idprovedor, _num_ordenC, _total_costos, _subtotal);
 	SET idOrden = LAST_INSERT_ID();
     
     SELECT idOrden;
@@ -54,17 +55,25 @@ CREATE PROCEDURE spu_detalleOrden_register(
 IN _idrepuesto INT,
 IN _idordencompra INT,
 IN _cantidad SMALLINT,
-IN _precio_unitario DECIMAL(6,2),
-IN _subtotal DECIMAL(6,2)
+IN _precio_unitario DECIMAL(6,2)
 )
 BEGIN
-	INSERT INTO DETALLE_ORDENC (idrepuesto, idordencompra, cantidad, precio_unitario, subtotal) VALUES
-					(_idrepuesto, _idordencompra, _cantidad, _precio_unitario, _subtotal);
+	INSERT INTO DETALLE_ORDENC (idrepuesto, idordencompra, cantidad, precio_unitario) VALUES
+					(_idrepuesto, _idordencompra, _cantidad, _precio_unitario);
 
 END //
 DELIMITER ;
 
+CALL spu_detalleOrden_register (1, 1, 12, 20);
 
 
+select * from ORDEN_COMPRAS;
+select * from DETALLE_ORDENC;
+
+DELETE FROM ORDEN_COMPRAS;
+
+DELETE FROM DETALLE_ORDENC;
+
+ALTER TABLE DETALLE_ORDENC AUTO_INCREMENT = 1;
 
 

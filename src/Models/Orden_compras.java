@@ -8,8 +8,10 @@ public class Orden_compras {
     private int idprovedor;
     private String num_ordenC;
     private double total_costos;
+    private double subtotal;
     private String estado;
     private LocalDateTime create_at;
+    
 
     public int getIdordencompra() {
         return idordencompra;
@@ -42,6 +44,8 @@ public class Orden_compras {
     public void setTotal_costos(double total_costos) {
         this.total_costos = total_costos;
     }
+    
+    
 
     public String getEstado() {
         return estado;
@@ -57,6 +61,14 @@ public class Orden_compras {
 
     public void setCreate_at(LocalDateTime create_at) {
         this.create_at = create_at;
+    }
+
+    public double getSubtotal() {
+        return subtotal;
+    }
+
+    public void setSubtotal(double subtotal) {
+        this.subtotal = subtotal;
     }
     
     

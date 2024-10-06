@@ -6,6 +6,7 @@ import ModelDAO.CompraDAO;
 import ModelDAO.ProveedorDAO;
 import Models.Proveedor;
 import Models.Orden_compras;
+import Models.Detalle_orden;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.text.SimpleDateFormat;
@@ -27,6 +28,7 @@ public class JInternal_ordenCompra extends javax.swing.JInternalFrame {
         getProvedores();
         fechaActual();
         txtIdRepuesto.setVisible(false);
+        txtIgv.setText("0.18");
         
         
         
@@ -132,10 +134,13 @@ public class JInternal_ordenCompra extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tbRepuesto = new javax.swing.JTable();
-        jPanel4 = new javax.swing.JPanel();
-        btnRegistrar = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         txtSubtotal = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        btnRegistrar = new javax.swing.JButton();
+        txtTotal = new javax.swing.JTextField();
+        txtIgv = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(null);
@@ -363,7 +368,16 @@ public class JInternal_ordenCompra extends javax.swing.JInternalFrame {
         });
         jScrollPane2.setViewportView(tbRepuesto);
 
-        jPanel4.setBackground(new java.awt.Color(204, 204, 255));
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel11.setText("IMPUESTO(IGV):");
+
+        txtSubtotal.setEnabled(false);
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel12.setText("SUBTOTAL:");
+
+        jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel13.setText("TOTAL COSTO:");
 
         btnRegistrar.setText("REGISTRAR");
         btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
@@ -372,25 +386,9 @@ public class JInternal_ordenCompra extends javax.swing.JInternalFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(217, 217, 217))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
-        );
+        txtTotal.setEnabled(false);
 
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel11.setText("SUBTOTAL:");
+        txtIgv.setEnabled(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -398,6 +396,21 @@ public class JInternal_ordenCompra extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(265, 265, 265)
+                        .addComponent(jLabel13))
+                    .addComponent(jLabel11)
+                    .addComponent(jLabel12))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtSubtotal, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtIgv, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(80, 80, 80))
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(69, 69, 69)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -410,16 +423,6 @@ public class JInternal_ordenCompra extends javax.swing.JInternalFrame {
                             .addComponent(panelRound2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1287, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(69, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel11)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtSubtotal, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(86, 86, 86))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -430,21 +433,25 @@ public class JInternal_ordenCompra extends javax.swing.JInternalFrame {
                     .addComponent(jLabel2)
                     .addComponent(jLabel1))
                 .addGap(12, 12, 12)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(panelRound1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelRound2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtSubtotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(panelRound1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(panelRound2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(497, 497, 497)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtSubtotal, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
-                            .addComponent(jLabel11))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel11)
+                    .addComponent(txtIgv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(8, 8, 8)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel13)
+                    .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -516,13 +523,20 @@ public class JInternal_ordenCompra extends javax.swing.JInternalFrame {
                 tbRe.addRow(new Object[] { id, repuesto, marca, modelo, catego, unidad, cantidad, precio, total });
 
                 double subTotal = 0.0;
-
+                
                 for(int i = 0; i < tbRe.getRowCount(); i++){
                     double suma = (double) tbRe.getValueAt(i, 8);
                     subTotal += suma;
                 }
+                
+                double impuesto = subTotal * 0.18;
+                double totalFinal = subTotal + impuesto;
+                
 
                 txtSubtotal.setText(String.valueOf(subTotal));
+                txtIgv.setText(String.valueOf(impuesto));
+                txtTotal.setText(String.valueOf(totalFinal));
+              
             }
         resetFormat();
         }
@@ -542,7 +556,14 @@ public class JInternal_ordenCompra extends javax.swing.JInternalFrame {
                 double suma = (double) tbRe.getValueAt(i, 8);
                 subTotal += suma;
             }
+            
+            double impuesto = Math.round(subTotal * 0.18);
+            double totalFinal = subTotal + impuesto;
+                
             txtSubtotal.setText(String.valueOf(subTotal));
+            txtIgv.setText(String.valueOf(impuesto));
+            txtTotal.setText(String.valueOf(totalFinal));
+            
         } else {
             
             JOptionPane.showMessageDialog(null, "Por favor, selecciona una fila para eliminar.");
@@ -551,21 +572,41 @@ public class JInternal_ordenCompra extends javax.swing.JInternalFrame {
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         Orden_compras oc = new Orden_compras();
-        
+
         String provedor = cbProvedor.getSelectedItem().toString();
         int idprovedor = Pdao.listarOne(provedor);
-        
+
         oc.setIdprovedor(idprovedor);
         oc.setNum_ordenC(txtOrden.getText());
-        oc.setTotal_costos(Double.parseDouble(txtSubtotal.getText()));
+        oc.setTotal_costos(Double.parseDouble(txtTotal.getText()));
+        oc.setSubtotal(Double.parseDouble(txtSubtotal.getText()));
         int idCompra = Cdao.insertOrdenCompra(oc);
-        
+
         registrarDetalleOC(idCompra);
-           
-        
+
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     public void registrarDetalleOC(int idCompra){
+        
+        Detalle_orden det_oc = new Detalle_orden();
+        ArrayList<Detalle_orden> detalleVector = new ArrayList<>();
+        DefaultTableModel model = (DefaultTableModel) tbRepuesto.getModel();
+        
+        
+        for(int i = 0; i < model.getRowCount(); i++){
+            
+          det_oc = new Detalle_orden();
+          det_oc.setIdrepuesto((int) model.getValueAt(i, 0));
+          det_oc.setIdordencompra(idCompra);
+          det_oc.setCantidad((int) Math.round((double) model.getValueAt(i, 6)));
+          det_oc.setPrecio_unitario((double) model.getValueAt(i, 7));
+          
+          detalleVector.add(det_oc);    
+        }
+        
+        for(Detalle_orden det : detalleVector){
+            Cdao.insertDetalleOrden(det);
+        }
         
     }
     
@@ -584,6 +625,8 @@ public class JInternal_ordenCompra extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -594,7 +637,6 @@ public class JInternal_ordenCompra extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private com.toedter.calendar.JDateChooser jdFecha;
@@ -604,10 +646,12 @@ public class JInternal_ordenCompra extends javax.swing.JInternalFrame {
     private javax.swing.JTable tbRepuestoOC;
     private javax.swing.JTextField txtCantidad;
     private javax.swing.JTextField txtIdRepuesto;
+    private javax.swing.JTextField txtIgv;
     private javax.swing.JTextField txtOrden;
     private javax.swing.JTextField txtPrecio;
     private javax.swing.JTextField txtRepuesto;
     private javax.swing.JTextField txtSearch;
     private javax.swing.JTextField txtSubtotal;
+    private javax.swing.JTextField txtTotal;
     // End of variables declaration//GEN-END:variables
 }

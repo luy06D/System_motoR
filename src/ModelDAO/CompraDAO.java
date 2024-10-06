@@ -81,13 +81,14 @@ public class CompraDAO implements Compra_Interface {
         
         try{
             
-            String queryInsert = "{CALL spu_ordenC_register(?,?,?)}";
+            String queryInsert = "{CALL spu_ordenC_register(?,?,?,?)}";
             connec = conexion.getConexion();
             cs = connec.prepareCall(queryInsert);
             
             cs.setInt(1, orden.getIdprovedor());
             cs.setString(2, orden.getNum_ordenC());
             cs.setDouble(3, orden.getTotal_costos());
+            cs.setDouble(4, orden.getSubtotal());
             
             rs = cs.executeQuery();
             
@@ -105,14 +106,14 @@ public class CompraDAO implements Compra_Interface {
     @Override
     public boolean insertDetalleOrden(Detalle_orden det) {
        try{
-           String insertDetalleOc = "{CALL spu_detalleOrden_register(?,?,?,?,?)}";
+           String insertDetalleOc = "{CALL spu_detalleOrden_register(?,?,?,?)}";
            connec = conexion.getConexion();
            cs = connec.prepareCall(insertDetalleOc);
            cs.setInt(1, det.getIdrepuesto());
            cs.setInt(2, det.getIdordencompra());
            cs.setInt(3, det.getCantidad());
            cs.setDouble(4, det.getPrecio_unitario());
-           cs.setDouble(5, det.getSubtotal());
+ 
            
            cs.executeUpdate();
            connec.close();
