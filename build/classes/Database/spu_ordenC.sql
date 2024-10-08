@@ -66,14 +66,14 @@ DELIMITER ;
 
 CALL spu_detalleOrden_register (1, 1, 12, 20);
 
+-- LISTAR ORDENES PENDIENTES 
+DELIMITER //
+CREATE PROCEDURE spu_ordenes_listar()
+BEGIN
 
-select * from ORDEN_COMPRAS;
-select * from DETALLE_ORDENC;
+SELECT PRO.razon_social, num_ordenC, estado , subtotal, total_costos, create_at
+FROM ORDEN_COMPRAS OC
+INNER JOIN PROVEEDORES PRO ON OC.idprovedor = PRO.idprovedor;
 
-DELETE FROM ORDEN_COMPRAS;
-
-DELETE FROM DETALLE_ORDENC;
-
-ALTER TABLE DETALLE_ORDENC AUTO_INCREMENT = 1;
-
-
+END //
+DELIMITER ;

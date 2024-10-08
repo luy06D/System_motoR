@@ -4,6 +4,7 @@ package Views;
 import Views.cliente.JInternal_ClientesR;
 import Views.cliente.JInternal_ClientesG;
 import Views.compra.JInternal_ordenCompra;
+import Views.compra.JInternal_recepcionCompra;
 import Views.usuario.JInternal_UsuariosR;
 import Views.usuario.JInternal_UsuariosG;
 import Views.repuesto.JInternal_Marcas_Categ;
@@ -39,7 +40,7 @@ public class Jframe_Inicio extends javax.swing.JFrame {
         Item_registro = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
         itemOrdenC = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        itemRecepcion = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
@@ -153,8 +154,13 @@ public class Jframe_Inicio extends javax.swing.JFrame {
         });
         jMenu6.add(itemOrdenC);
 
-        jMenuItem1.setText("RECEPCION COMPRA");
-        jMenu6.add(jMenuItem1);
+        itemRecepcion.setText("RECEPCION COMPRA");
+        itemRecepcion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemRecepcionActionPerformed(evt);
+            }
+        });
+        jMenu6.add(itemRecepcion);
 
         jMenuItem2.setText("REPORTE COMPRAS");
         jMenu6.add(jMenuItem2);
@@ -301,6 +307,11 @@ public class Jframe_Inicio extends javax.swing.JFrame {
         openInternalFrame(JIcompraR);
     }//GEN-LAST:event_itemOrdenCActionPerformed
 
+    private void itemRecepcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemRecepcionActionPerformed
+        JInternal_recepcionCompra jInternal_recep = new JInternal_recepcionCompra();
+        openInternalFrame(jInternal_recep); 
+    }//GEN-LAST:event_itemRecepcionActionPerformed
+
     
     
     
@@ -357,6 +368,7 @@ public class Jframe_Inicio extends javax.swing.JFrame {
     private javax.swing.JMenuItem itemOrdenC;
     private javax.swing.JMenuItem itemProductoG;
     private javax.swing.JMenuItem itemProductosR;
+    private javax.swing.JMenuItem itemRecepcion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -366,7 +378,6 @@ public class Jframe_Inicio extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenu jMenu8;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

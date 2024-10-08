@@ -28,10 +28,7 @@ public class JInternal_ordenCompra extends javax.swing.JInternalFrame {
         getProvedores();
         fechaActual();
         txtIdRepuesto.setVisible(false);
-        txtIgv.setText("0.18");
-        
-        
-        
+
         tbRepuestoOC.addMouseListener(new MouseAdapter(){
             public void mousePressed(MouseEvent mouse_evt){
                 
@@ -68,8 +65,8 @@ public class JInternal_ordenCompra extends javax.swing.JInternalFrame {
         txtCantidad.setText(null);
         txtIdRepuesto.setText(null);
         txtSearch.setText(null);
-        DefaultTableModel tbRepuesto = (DefaultTableModel) tbRepuestoOC.getModel();
-        tbRepuesto.setRowCount(0);
+        DefaultTableModel tbRepuesto_oc = (DefaultTableModel) tbRepuestoOC.getModel();
+        tbRepuesto_oc.setRowCount(0);
     }
     
     
@@ -98,8 +95,17 @@ public class JInternal_ordenCompra extends javax.swing.JInternalFrame {
         
        
     }
-
-
+    
+    private void resetForm_oc(){
+        cbProvedor.setSelectedIndex(0);
+        txtOrden.setText(null);
+        DefaultTableModel tbRepu = (DefaultTableModel) tbRepuesto.getModel();
+        tbRepu.setRowCount(0);
+        txtSubtotal.setText(null);
+        txtIgv.setText(null);
+        txtTotal.setText(null);
+                
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -583,6 +589,9 @@ public class JInternal_ordenCompra extends javax.swing.JInternalFrame {
         int idCompra = Cdao.insertOrdenCompra(oc);
 
         registrarDetalleOC(idCompra);
+        
+        JOptionPane.showMessageDialog(this, "Orden registrada con exito");
+        resetForm_oc();
 
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
@@ -609,6 +618,8 @@ public class JInternal_ordenCompra extends javax.swing.JInternalFrame {
         }
         
     }
+    
+    
     
     
     
