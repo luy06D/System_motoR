@@ -78,3 +78,18 @@ BEGIN
 
 END //
 DELIMITER ;
+
+-- GET DETALLES DE ORDEN COMPRA 
+DELIMITER //
+CREATE PROCEDURE spu_getDetalleOc(IN ordenC VARCHAR(5))
+BEGIN 
+	SELECT idordencompra,num_ordenC, total_costos, subtotal, estado, 
+			PRO.razon_social	
+    FROM ORDEN_COMPRAS OC
+    INNER JOIN PROVEEDORES PRO ON OC.idprovedor = PRO.idprovedor;
+END //
+DELIMITER ;
+
+select * 
+from DETALLE_ORDENC
+WHERE idordencompra = 2;
