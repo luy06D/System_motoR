@@ -45,7 +45,7 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Component id="jPanel5" alignment="0" max="32767" attributes="0"/>
-              <Component id="jTabbedPane1" alignment="0" pref="1316" max="32767" attributes="0"/>
+              <Component id="jTabbedPane1" alignment="0" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -141,14 +141,16 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JTable" name="jTable1">
+                    <Component class="javax.swing.JTable" name="tbPendiente">
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                          <Table columnCount="4" rowCount="4">
-                            <Column editable="true" title="Title 1" type="java.lang.Object"/>
-                            <Column editable="true" title="Title 2" type="java.lang.Object"/>
-                            <Column editable="true" title="Title 3" type="java.lang.Object"/>
-                            <Column editable="true" title="Title 4" type="java.lang.Object"/>
+                          <Table columnCount="6" rowCount="4">
+                            <Column editable="false" title="RAZON SOCIAL " type="java.lang.Object"/>
+                            <Column editable="false" title="ORDEN COMPRA" type="java.lang.Object"/>
+                            <Column editable="false" title="ESTADO " type="java.lang.Object"/>
+                            <Column editable="false" title="SUBTOTAL" type="java.lang.Object"/>
+                            <Column editable="false" title="TOTAL COSTOS" type="java.lang.Object"/>
+                            <Column editable="false" title="FECHA REGISTRO" type="java.lang.Object"/>
                           </Table>
                         </Property>
                       </Properties>

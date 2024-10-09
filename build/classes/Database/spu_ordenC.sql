@@ -71,9 +71,10 @@ DELIMITER //
 CREATE PROCEDURE spu_ordenes_listar()
 BEGIN
 
-SELECT PRO.razon_social, num_ordenC, estado , subtotal, total_costos, create_at
-FROM ORDEN_COMPRAS OC
-INNER JOIN PROVEEDORES PRO ON OC.idprovedor = PRO.idprovedor;
+	SELECT PRO.razon_social, num_ordenC, estado , subtotal, total_costos, create_at
+	FROM ORDEN_COMPRAS OC
+	INNER JOIN PROVEEDORES PRO ON OC.idprovedor = PRO.idprovedor
+	WHERE estado = "PENDIENTE";
 
 END //
 DELIMITER ;
